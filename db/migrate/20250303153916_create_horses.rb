@@ -7,7 +7,7 @@ class CreateHorses < ActiveRecord::Migration[7.1]
       t.integer :age
       t.string :location
       t.float :stud_fee
-      t.string :pedigry
+      t.string :pedigree
       t.string :progeny_success
       t.text :race_record
 

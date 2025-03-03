@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_03_153916) do
     t.integer "age"
     t.string "location"
     t.float "stud_fee"
-    t.string "pedigry"
+    t.string "pedigree"
     t.string "progeny_success"
     t.text "race_record"
     t.datetime "created_at", null: false

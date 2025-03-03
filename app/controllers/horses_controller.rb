@@ -1,5 +1,4 @@
 class HorsesController < ApplicationController
-
   def index
     @horses = Horse.all
   end
@@ -18,10 +17,9 @@ class HorsesController < ApplicationController
     end
   end
 
-
   private
 
   def horse_params
-    params.require(:horse).permit(:name, :location, :breed, :age, :stud_fee, :pedigry, :progeny_success, :race_record)
+    params.require(:horse).permit(:name, :breed, :age, :location, :stud_fee, :pedigree, :progeny_success, :race_record)
   end
 end
