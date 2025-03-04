@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :horse
 
-  enum status: { pending: 0, accepted: 1, declined: 2 }
+  enum status: { pending: 0, accepted: 1, declined: 2, cancelled: 3, completed: 4 }
 
   validates :start_date, :end_date, :price_at_booking, presence: true
   validate :end_date_after_start_date
