@@ -11,9 +11,10 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @horse = Horse.find(params[:horse_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @booking.price_at_booking = @booking.horse.stud_fee # Ensures correct price is stored
+    @booking.price_at_booking = @horse.stud_fee # Ensures correct price is stored
 
     if @booking.save
       redirect_to @booking, notice: "Booking request submitted!"
