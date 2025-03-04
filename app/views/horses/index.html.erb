@@ -1,9 +1,169 @@
 <h1>Horses</h1>
 
-<ul>
-  <% @horses.each do|horse|%>
-    <li><%= link_to horse.name, horse_path(horse) %></li>
-  <% end %>
-</ul>
 
-<%= link_to "New Horse", new_horse_path  %>
+<!-- Magnifying Glass Button -->
+<button class="btn btn-outline-secondary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#filterOffcanvas"
+        aria-controls="filterOffcanvas">
+  <i class="fa fa-search"></i> <!-- This icon relies on Font Awesome -->
+</button>
+
+
+<!-- Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="filterOffcanvasLabel">Filter Horses</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <!-- Filter Form -->
+    <%= form_with(url: horses_path, method: :get, local: true) do %>
+      <!-- Name -->
+      <div class="mb-3">
+        <%= label_tag :name, "Name" %>
+        <%= text_field_tag :name, params[:name], class: "form-control" %>
+      </div>
+
+      <!-- Breed -->
+      <div class="mb-3">
+        <%= label_tag :breed, "Breed" %>
+        <%= text_field_tag :breed, params[:breed], class: "form-control" %>
+      </div>
+
+      <!-- Age: Min/Max -->
+      <div class="mb-3">
+        <%= label_tag :age_min, "Min Age" %>
+        <%= number_field_tag :age_min, params[:age_min], class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= label_tag :age_max, "Max Age" %>
+        <%= number_field_tag :age_max, params[:age_max], class: "form-control" %>
+      </div>
+
+      <!-- Location -->
+      <div class="mb-3">
+        <%= label_tag :location, "Location" %>
+        <%= text_field_tag :location, params[:location], class: "form-control" %>
+      </div>
+
+      <!-- Stud Fee: Min/Max -->
+      <div class="mb-3">
+        <%= label_tag :stud_fee_min, "Min Stud Fee" %>
+        <%= number_field_tag :stud_fee_min, params[:stud_fee_min], step: 0.01, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= label_tag :stud_fee_max, "Max Stud Fee" %>
+        <%= number_field_tag :stud_fee_max, params[:stud_fee_max], step: 0.01, class: "form-control" %>
+      </div>
+
+      <!-- Pedigree -->
+      <div class="mb-3">
+        <%= label_tag :pedigree, "Pedigree" %>
+        <%= text_field_tag :pedigree, params[:pedigree], class: "form-control" %>
+      </div>
+
+      <!-- Progeny Success -->
+      <div class="mb-3">
+        <%= label_tag :progeny_success, "Progeny Success" %>
+        <%= text_field_tag :progeny_success, params[:progeny_success], class: "form-control" %>
+      </div>
+
+      <!-- Race Record -->
+      <div class="mb-3">
+        <%= label_tag :race_record, "Race Record" %>
+        <%= text_field_tag :race_record, params[:race_record], class: "form-control" %>
+      </div>
+
+      <!-- Submit button -->
+      <%= submit_tag "Search",  class: "btn btn-primary w-100" %>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- Container (optional) to center content and add top/bottom margin -->
+<div class="container my-4">
+
+  <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
+
+    <!-- Iterate over your horses -->
+    <% @horses.each do |horse| %>
+      <div class="col">
+
+        <!-- Card (clickable) -->
+        <div class="card h-100 p-3"
+             style="cursor: pointer; background-color: #ebcab5;"
+             data-bs-toggle="modal"
+             data-bs-target="#horseModal-<%= horse.id %>">
+
+          <!-- Image -->
+          <%= image_tag "backup-image.png",
+              alt: "No Image",
+              class: "card-img-top img-fluid border rounded mb-3",
+              style: "border-color: #ccc;" %>
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <h5 class="card-title"><%= horse.name %></h5>
+            <p class="card-text">
+              <strong>Location:</strong> <%= horse.location %><br>
+              <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+            </p>
+          </div>
+        </div>
+
+        <!-- Modal for This Horse -->
+        <div class="modal fade"
+             id="horseModal-<%= horse.id %>"
+             tabindex="-1"
+             aria-labelledby="horseModalLabel-<%= horse.id %>"
+             aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <!-- Header -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">
+                  <%= horse.name %>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+              </div>
+
+              <!-- Body -->
+              <div class="modal-body">
+                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+                <p>
+                  <strong>Breed:</strong> <%= horse.breed %><br>
+                  <strong>Age:</strong> <%= horse.age %><br>
+                  <strong>Location:</strong> <%= horse.location %><br>
+                  <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %><br>
+                  <strong>Pedigree:</strong> <%= horse.pedigree %><br>
+                  <strong>Progeny Success:</strong> <%= horse.progeny_success %><br>
+                  <strong>Race Record:</strong> <%= horse.race_record %>
+                </p>
+              </div>
+
+              <!-- Footer -->
+              <div class="modal-footer">
+                <%= link_to "Book", "#", class: "btn btn-primary" %>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  <!-- Optional icon if using Font Awesome -->
+                  <i class="fa fa-times"></i>
+                  Close
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End of Modal -->
+
+      </div>
+    <% end %>
+  </div>
+</div>
