@@ -1,0 +1,8 @@
+<%= simple_form_for [@horse, @booking] do |f| %>
+  <%= f.input :start_date, as: :date, label: "Start Date" %>
+  <%= f.input :end_date, as: :date, label: "End Date" %>
+
+  <%= f.input :price_at_booking, as: :decimal, label: "Price at Booking", step: 0.01, input_html: { value: @horse.stud_fee, readonly: true } %>
+
+  <%= f.submit "Request Booking", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>My Bookings</h1>
+
+<h2>Requested Bookings</h2>
+<ul>
+  <% @my_requests.each do |booking| %>
+    <li>
+      <%= link_to booking.horse.name, booking_path(booking) %>
+      (Status: <%= booking.status %>)
+    </li>
+  <% end %>
+</ul>
+
+<h2>Incoming Requests</h2>
+<ul>
+  <% @incoming_requests.each do |booking| %>
+    <li>
+      <%= link_to booking.horse.name, booking_path(booking) %>
+      (Status: <%= booking.status %>)
+    </li>
+  <% end %>
+</ul>
