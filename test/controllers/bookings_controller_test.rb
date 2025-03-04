@@ -15,12 +15,19 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create booking" do
-    assert_difference('Booking.count') do
-      post bookings_url, params: { booking: { horse_id: @horse.id, user_id: @user.id, start_date: Date.today, end_date: Date.today + 1.week } }
+    assert_difference('Booking.count', 1) do
+      post horse_bookings_url(@horse), params: {
+        booking: {
+          start_date: Date.today,
+          end_date: Date.today + 7,
+          status: "pending",
+          price_at_booking: 500
+        }
+      }
     end
-
-    assert_redirected_to booking_url(Booking.last)
+    assert_redirected_to horses_url
   end
+
 
   test "should show booking" do
     get booking_url(@booking)
