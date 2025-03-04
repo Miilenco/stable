@@ -1,0 +1,21 @@
+one:
+  name: "Horse One"
+  breed: "Thoroughbred"
+  age: 5
+  location: "Stable One"
+  stud_fee: 1500.0
+  pedigree: "Pedigree Information One"
+  progeny_success: "Progeny Success Information One"
+  race_record: "Race Record Information One"
+  user: one
+
+two:
+  name: "Horse Two"
+  breed: "Arabian"
+  age: 3
+  location: "Stable Two"
+  stud_fee: 2000.0
+  pedigree: "Pedigree Information Two"
+  progeny_success: "Progeny Success Information Two"
+  race_record: "Race Record Information Two"
+  user: one

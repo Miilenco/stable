@@ -1,0 +1,15 @@
+one:
+  horse: one
+  user: one
+  start_date: <%= Date.today %>
+  end_date: <%= Date.today + 1.week %>
+  price_at_booking: 500.0
+  status: pending
+
+two:
+  horse: two
+  user: one
+  start_date: <%= Date.today + 1.day %>
+  end_date: <%= Date.today + 1.week + 1.day %>
+  price_at_booking: 700.0
+  status: accepted

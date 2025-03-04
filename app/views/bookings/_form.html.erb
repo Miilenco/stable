@@ -1,4 +1,6 @@
 <%= simple_form_for [@horse, @booking] do |f| %>
+  <%= f.hidden_field :horse_id, value: @horse.id %> <!-- Ensure horse_id is sent -->
+
   <%= f.input :start_date, as: :date, label: "Start Date" %>
   <%= f.input :end_date, as: :date, label: "End Date" %>
 
