@@ -49,7 +49,7 @@ end
 
 # Create bookings
 puts "Creating bookings..."
-statuses = ["pending", "accepted", "declined"]
+statuses = ["pending", "accepted", "declined", "cancelled", "completed"]
 
 30.times do
   horse = horses.sample
@@ -69,4 +69,3 @@ statuses = ["pending", "accepted", "declined"]
 end
 
 puts "Seeding completed!"
-
