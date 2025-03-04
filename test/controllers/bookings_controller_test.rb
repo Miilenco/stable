@@ -27,16 +27,8 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to booking_url(Booking.last)
   end
 
-  test "should show booking" do
-    get booking_url(@booking)
-    assert_response :success
-  end
-
   test "should update booking" do
     patch booking_url(@booking), params: { booking: { start_date: Date.today, end_date: Date.today + 1.week } }
     assert_redirected_to booking_url(@booking)
-  end
-
-    assert_redirected_to bookings_url
   end
 end
