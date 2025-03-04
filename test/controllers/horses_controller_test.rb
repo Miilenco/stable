@@ -1,6 +1,7 @@
 require "test_helper"
 
 class HorsesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @horse = horses(:one)
     @user = users(:one)
