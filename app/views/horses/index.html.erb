@@ -77,106 +77,92 @@
       </div>
 
       <!-- Submit button -->
-      <%= submit_tag "Search", class: "btn btn-primary w-100" %>
+      <%= submit_tag "Search",  class: "btn btn-primary w-100" %>
     <% end %>
   </div>
 </div>
 
 
-<!-- Card Grid -->
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <% @horses.each do |horse| %>
-    <div class="col">
+<!-- Container (optional) to center content and add top/bottom margin -->
+<div class="container my-4">
 
-      <!-- Card (clickable) -->
-      <!-- data-bs-toggle & data-bs-target open the modal with ID horseModal-<%= horse.id %> -->
-      <div class="card h-100"
-           style="cursor: pointer;"
-           data-bs-toggle="modal"
-           data-bs-target="#horseModal-<%= horse.id %>">
+  <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
 
-        <!-- Example: Cloudinary image -->
-        <% if horse.image_public_id.present? %>
-          <%= cl_image_tag(horse.image_public_id,
-                           alt: horse.name,
-                           class: "card-img-top",
-                           width: 300,
-                           height: 200,
-                           crop: :fill) %>
-        <% else %>
-          <img src="https://via.placeholder.com/300x200?text=No+Image"
-               alt="No image"
-               class="card-img-top">
-        <% end %>
+    <!-- Iterate over your horses -->
+    <% @horses.each do |horse| %>
+      <div class="col">
 
-        <div class="card-body">
-          <h5 class="card-title"><%= horse.name %></h5>
-          <p class="card-text">
-            <strong>Location:</strong> <%= horse.location %><br>
-            <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
-          </p>
+        <!-- Card (clickable) -->
+        <div class="card h-100 p-3"
+             style="cursor: pointer; background-color: #ebcab5;"
+             data-bs-toggle="modal"
+             data-bs-target="#horseModal-<%= horse.id %>">
+
+          <!-- Image -->
+          <%= image_tag "backup-image.png",
+              alt: "No Image",
+              class: "card-img-top img-fluid border rounded mb-3",
+              style: "border-color: #ccc;" %>
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <h5 class="card-title"><%= horse.name %></h5>
+            <p class="card-text">
+              <strong>Location:</strong> <%= horse.location %><br>
+              <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Modal (Large View) for This Horse -->
-      <!-- Each modal has a unique ID like "horseModal-<%= horse.id %>" -->
-      <div class="modal fade"
-           id="horseModal-<%= horse.id %>"
-           tabindex="-1"
-           aria-labelledby="horseModalLabel-<%= horse.id %>"
-           aria-hidden="true">
-        <div class="modal-dialog modal-lg"><!-- or modal-xl for an even bigger view -->
-          <div class="modal-content">
+        <!-- Modal for This Horse -->
+        <div class="modal fade"
+             id="horseModal-<%= horse.id %>"
+             tabindex="-1"
+             aria-labelledby="horseModalLabel-<%= horse.id %>"
+             aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-            <!-- Header with Close (X) -->
-            <div class="modal-header">
-              <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">
-                <%= horse.name %>
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+              <!-- Header -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">
+                  <%= horse.name %>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+              </div>
 
-            <!-- Body: Large horse details -->
-            <div class="modal-body">
-              <% if horse.image_public_id.present? %>
-                <%= cl_image_tag(horse.image_public_id,
-                                 alt: horse.name,
-                                 class: "img-fluid mb-3",
-                                 width: 600,
-                                 crop: :fill) %>
-              <% else %>
-                <img src="https://via.placeholder.com/600x400?text=No+Image"
-                     alt="No image"
-                     class="img-fluid mb-3">
-              <% end %>
+              <!-- Body -->
+              <div class="modal-body">
+                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+                <p>
+                  <strong>Breed:</strong> <%= horse.breed %><br>
+                  <strong>Age:</strong> <%= horse.age %><br>
+                  <strong>Location:</strong> <%= horse.location %><br>
+                  <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %><br>
+                  <strong>Pedigree:</strong> <%= horse.pedigree %><br>
+                  <strong>Progeny Success:</strong> <%= horse.progeny_success %><br>
+                  <strong>Race Record:</strong> <%= horse.race_record %>
+                </p>
+              </div>
 
-              <p>
-                <strong>Breed:</strong> <%= horse.breed %><br>
-                <strong>Age:</strong> <%= horse.age %><br>
-                <strong>Location:</strong> <%= horse.location %><br>
-                <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %><br>
-                <strong>Pedigree:</strong> <%= horse.pedigree %><br>
-                <strong>Progeny Success:</strong> <%= horse.progeny_success %><br>
-                <strong>Race Record:</strong> <%= horse.race_record %>
-              </p>
-            </div>
+              <!-- Footer -->
+              <div class="modal-footer">
+                <%= link_to "Book", "#", class: "btn btn-primary" %>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  <!-- Optional icon if using Font Awesome -->
+                  <i class="fa fa-times"></i>
+                  Close
+                </button>
+              </div>
 
-            <!-- Footer with "Book" and "Close" Buttons -->
-            <div class="modal-footer">
-              <!-- "Book" could link to a booking path, or do something else -->
-              <%= link_to "Book", "#", class: "btn btn-primary" %>
-
-              <!-- "X" button can simply close the modal too -->
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                <i class="fa fa-times"></i> <!-- optional icon -->
-                Close
-              </button>
             </div>
           </div>
         </div>
-      </div>
-      <!-- End of Modal -->
+        <!-- End of Modal -->
 
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
