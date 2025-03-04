@@ -73,6 +73,9 @@ group :development do
 
   # Autoreloads html/css as you edit
   gem "hotwire-livereload"
+
+  # Faker gem for seedfile
+  gem "faker"
 end
 
 group :test do
