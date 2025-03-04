@@ -1,0 +1,15 @@
+<h2><%= @horse.name %></h2>
+
+<p><%= @horse.breed %></p>
+<p><%= @horse.location %></p>
+<p><%= @horse.stud_fee %></p>
+
+
+<%= link_to "Back to list", horses_path %>
+<%= link_to "Edit", edit_horse_path(@horse) %>
+
+
+<%= link_to "Delete",
+  horse_path(@horse),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
