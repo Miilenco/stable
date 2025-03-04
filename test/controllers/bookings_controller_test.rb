@@ -25,7 +25,7 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
         }
       }
     end
-    assert_redirected_to horses_url
+    assert_redirected_to booking_url(@booking)
   end
 
 
