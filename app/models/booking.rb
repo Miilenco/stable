@@ -7,7 +7,13 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, :price_at_booking, :status, presence: true
   validate :end_date_after_start_date
 
+  before_validation :set_default_status, on: :create
+
   private
+
+  def set_default_status
+    self.status ||= :pending
+  end
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?

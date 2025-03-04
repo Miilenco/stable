@@ -54,7 +54,6 @@ statuses = ["pending", "accepted", "declined", "cancelled", "completed"]
 30.times do
   horse = horses.sample
   user = (users - [horse.user]).sample # Ensures requester isn't the horse owner
-
   start_date = Date.today + rand(1..30) # Random date within the next month
   end_date = start_date + rand(1..7) # Booking lasts 1-7 days
 
