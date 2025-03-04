@@ -11,10 +11,6 @@ class BookingsController < ApplicationController
   def show
   end
 
-  def new
-    @booking = Booking.new
-  end
-
   def create
     @booking = @horse.bookings.build(booking_params)
     @booking.user = current_user
