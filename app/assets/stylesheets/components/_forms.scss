@@ -1,0 +1,21 @@
+.currency-input {
+  text-align: right;
+  font-weight: bold;
+}
+
+.form-container {
+  background-color: #f8f9fa; /* Light off-white background */
+  padding: 2rem;
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Ensure input fields and buttons look nice */
+.form-container .form-control {
+  border-radius: 5px;
+}
+
+.form-container .btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+}
