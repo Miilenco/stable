@@ -2,6 +2,8 @@
 
 <ul>
   <% @horses.each do|horse|%>
-    <li><%= horse.name %></li>
+    <li><%= link_to horse.name, horse_path(horse) %></li>
   <% end %>
 </ul>
+
+<%= link_to "New Horse", new_horse_path  %>
