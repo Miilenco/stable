@@ -1,22 +1,125 @@
-<h2><%= @horse.name %></h2>
+<!-- app/views/horses/show.html.erb -->
 
-<p><%= @horse.breed %></p>
-<p><%= @horse.location %></p>
-<p><%= @horse.stud_fee %></p>
+<!-- Inline CSS for demonstration; ideally move these into a separate .css file. -->
+<style>
+  .custom-card {
+    display: flex;            /* side-by-side layout */
+    flex-direction: column;   /* icons on top, content below in a column */
+    border-radius: 20px;
+    background-color: #f2c6ad; /* pick a color close to your screenshot */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;         /* keeps corners rounded and hides overflow */
+    width: 100%;              /* fully responsive width */
+    max-width: 100%;          /* allow it to stretch within the parent container */
+    /* optional hover effect */
+  }
+  .custom-card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
 
+  /* Top bar for icons */
+  .icon-bar {
+    flex: 0 0 auto; /* do not stretch */
+    margin: 1rem;
+  }
 
-<%= link_to "Back to list", horses_path %>
-<%= link_to "Edit", edit_horse_path(@horse) %>
+  /* Main content area: donkey image (left) + details (right) side by side */
+  .card-content {
+    flex: 1 1 auto;        /* let this section grow/shrink */
+    display: flex;         /* side-by-side columns */
+    flex-direction: row;
+  }
 
+  /* Left column: the image container */
+  .image-col {
+    position: relative;
+    flex: 0 0 auto;        /* do not let it shrink */
+    height: 500px;         /* or min-height: 500px; or use something like 70vh */
+    width: auto;           /* it can expand for wide images */
+    background-color: #fff;/* if you want a white background behind the image */
+  }
 
-<%= link_to "Delete",
-  horse_path(@horse),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+  /* The actual image: use object-fit: contain to show the whole donkey */
+  .image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
 
-<% if user_signed_in? %>
-  <h2>Request a Booking</h2>
-  <%= render 'bookings/form', horse: @horse, booking: @booking %>
-<% else %>
-  <p><%= link_to "Sign in to request a booking", new_user_session_path %></p>
-<% end %>
+  /* Right column: text (breed, location, stud fee, booking form) */
+  .details-col {
+    flex: 1 1 auto;           /* fill the remaining horizontal space */
+    padding: 1rem 2rem;       /* adjust spacing as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertically center the text/content */
+  }
+
+  /* Basic styling for horse info */
+  .details-col h2 {
+    margin-bottom: 1rem;
+  }
+</style>
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-12">
+
+      <!-- Card -->
+      <div class="custom-card">
+
+        <!-- Icon Bar at the top -->
+        <div class="icon-bar">
+          <!-- Replace FA icons/classes as needed -->
+          <%= link_to horses_path, class: "btn btn-secondary me-2" do %>
+            <i class="fa fa-arrow-left"></i>
+          <% end %>
+
+          <%= link_to edit_horse_path(@horse), class: "btn btn-warning me-2" do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+
+          <%= link_to horse_path(@horse),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-danger" do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div>
+
+        <!-- Main content (image on the left, details on the right) -->
+        <div class="card-content">
+
+          <!-- Left: Image -->
+          <div class="image-col">
+            <%= image_tag "backup-image.png",
+                alt: "No Image",
+                class: "img-fluid" %>
+          </div>
+
+          <!-- Right: Details -->
+          <div class="details-col">
+            <h2><%= @horse.name %></h2>
+            <p><strong>Breed:</strong> <%= @horse.breed %></p>
+            <p><strong>Location:</strong> <%= @horse.location %></p>
+            <p><strong>Stud Fee:</strong> <%= number_to_currency(@horse.stud_fee) %></p>
+
+            <% if user_signed_in? %>
+              <h4>BOOK A SHAG</h4>
+              <%= render 'bookings/form', horse: @horse, booking: @booking %>
+            <% else %>
+              <div class="text-center mt-4">
+                <%= link_to new_user_session_path, class: "btn btn-dark btn-lg w-100" do %>
+                  BOOK A SHAG
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div> <!-- End .custom-card -->
+
+    </div>
+  </div>
+</div>
