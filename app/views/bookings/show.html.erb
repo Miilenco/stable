@@ -11,3 +11,5 @@
   <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-success" %>
   <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-danger" %>
 <% end %>
+
+<%= link_to "Back to horses", horses_path, class: "btn btn-primary" %>

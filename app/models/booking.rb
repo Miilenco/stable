@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, :price_at_booking, :status, presence: true
   validate :end_date_after_start_date
 
-  validates :cannot_book_own_horse
+  validate :cannot_book_own_horse
 
   after_initialize :set_default_status,  if: :new_record?
 
