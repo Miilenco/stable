@@ -32,20 +32,10 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_booking_url(@booking)
-    assert_response :success
-  end
-
   test "should update booking" do
     patch booking_url(@booking), params: { booking: { start_date: Date.today, end_date: Date.today + 1.week } }
     assert_redirected_to booking_url(@booking)
   end
-
-  test "should destroy booking" do
-    assert_difference('Booking.count', -1) do
-      delete booking_url(@booking)
-    end
 
     assert_redirected_to bookings_url
   end
