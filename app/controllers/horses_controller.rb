@@ -19,7 +19,7 @@ class HorsesController < ApplicationController
     @horse = Horse.new(horse_params)
     @horse.user = current_user
     if @horse.save
-      redirect_to horses_path
+      redirect_to horse_path(@horse), notice: 'Horse was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
