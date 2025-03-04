@@ -1,5 +1,5 @@
 class HorsesController < ApplicationController
-  before_action :set_task, only: [:edit, :update, :show]
+  before_action  :set_horse, only: [:edit, :update, :show]
 
   def index
     @horses = Horse.all
@@ -7,7 +7,7 @@ class HorsesController < ApplicationController
 
   def show
   end
-  
+
   def new
     @horse = Horse.new
   end
@@ -26,13 +26,17 @@ class HorsesController < ApplicationController
   end
 
   def update
-    @horse.update(horse_params)
-    redirect_to horse_path(@horse)
+    if @horse.update(horse_params)
+      redirect_to horse_path(@horse), notice: 'Horse was successfully updated.'
+    else
+      flash.now[:alert] = 'Failed to update horse. Please check the errors below.'
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
-  def set_task
+  def set_horse
     @horse = Horse.find(params[:id])
   end
 
