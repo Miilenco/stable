@@ -1,7 +1,7 @@
 <h1>Booking Details</h1>
 
 <p>Horse: <%= @booking.horse.name %></p>
-<p>Booked by: <%= @booking.user.first_name %> <%= @booking.user.last_name %></p>
+<p>Booked by: <%= @booking.user.email %></p>
 <p>Start Date: <%= @booking.start_date %></p>
 <p>End Date: <%= @booking.end_date %></p>
 <p>Price at Booking: £<%= @booking.price_at_booking %></p>
