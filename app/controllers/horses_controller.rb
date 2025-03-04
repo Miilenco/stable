@@ -1,5 +1,5 @@
 class HorsesController < ApplicationController
-  before_action  :set_horse, only: [:edit, :update, :show]
+  before_action  :set_horse, only: [:edit, :update, :show, :destroy]
 
   def index
     @horses = Horse.all
@@ -34,12 +34,16 @@ class HorsesController < ApplicationController
     end
   end
 
+  def destroy
+    @horse.destroy
+    redirect_to horses_path, status: :see_other
+  end
+
   private
 
   def set_horse
     @horse = Horse.find(params[:id])
   end
-
 
   def horse_params
     params.require(:horse).permit(:name, :breed, :age, :location, :stud_fee, :pedigree, :progeny_success, :race_record)
