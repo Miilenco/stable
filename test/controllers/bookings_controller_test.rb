@@ -15,7 +15,7 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_booking_url
+    get new_horse_booking_url(horses(:one))
     assert_response :success
   end
 
