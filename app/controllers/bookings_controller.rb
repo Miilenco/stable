@@ -11,7 +11,8 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = @horse.bookings.build(booking_params)
+    @horse = Horse.find(params[:horse_id])
+    @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.price_at_booking = @horse.stud_fee # Ensures correct price is stored
 
