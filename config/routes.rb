@@ -11,3 +11,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :horses, only: [:index, :new, :create]
 end
+
+
+Rails.application.routes.draw do
+  resources :horses, only: [:index]
+  # or resources :horses # if you have more actions
+end
