@@ -16,7 +16,7 @@
 
 <% if user_signed_in? %>
   <h2>Request a Booking</h2>
-  <%= render 'bookings/form', horse: @horse, booking: Booking.new %>
+  <%= render 'bookings/form', horse: @horse, booking: @booking %>
 <% else %>
   <p><%= link_to "Sign in to request a booking", new_user_session_path %></p>
 <% end %>
