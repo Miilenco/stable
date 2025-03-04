@@ -7,12 +7,20 @@ class Booking < ApplicationRecord
   validates :start_date, :end_date, :price_at_booking, :status, presence: true
   validate :end_date_after_start_date
 
-  before_validation :set_default_status, on: :create
+  validates :cannot_book_own_horse
+
+  after_initialize :set_default_status,  if: :new_record?
 
   private
 
   def set_default_status
     self.status ||= :pending
+  end
+
+  def cannot_book_own_horse
+    if horse.user == user
+      errors.add(:user, "cannot book your own horse")
+    end
   end
 
   def end_date_after_start_date

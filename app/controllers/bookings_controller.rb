@@ -17,10 +17,11 @@ class BookingsController < ApplicationController
     @booking.price_at_booking = @horse.stud_fee # Ensures correct price is stored
 
     if @booking.save
-      puts "✅ Booking saved successfully: #{@booking.inspect}" # Debugging line
+      # puts "✅ Booking saved successfully: #{@booking.inspect}" # Debugging line
       redirect_to @booking, notice: "Booking request submitted!"
     else
-      puts "❌ Booking failed to save: #{@booking.errors.full_messages}" # Debugging line
+      # puts "❌ Booking failed to save: #{@booking.errors.full_messages}" # Debugging line
+      flash.now[:alert] = @booking.errors.full_messages.join(", ")
       render "horses/show", status: :unprocessable_entity
     end
   end
