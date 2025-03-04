@@ -16,12 +16,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.build(booking_params)
+    @booking = @horse.bookings.build(booking_params)
+    @booking.user = current_user
+    @booking.price_at_booking = @horse.stud_fee # Ensures correct price is stored
 
     if @booking.save
       redirect_to @booking, notice: "Booking request submitted!"
     else
-      render :new, status: :unprocessable_entity
+      render "horses/show", status: :unprocessable_entity
     end
   end
 
