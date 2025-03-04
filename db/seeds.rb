@@ -13,13 +13,14 @@
 require 'faker'
 
 puts "Clearing existing records..."
+Booking.destroy_all
 Horse.destroy_all
 User.destroy_all
 
 # Create users
 puts "Creating users..."
 users = []
-5.times do
+10.times do
   users << User.create!(
     email: Faker::Internet.unique.email,
     password: "password123"
@@ -31,8 +32,9 @@ puts "Creating horses..."
 breeds = ["Thoroughbred", "Arabian", "Quarter Horse", "Andalusian", "Friesian"]
 locations = ["Newmarket, UK", "Lexington, USA", "Chantilly, France", "Sydney, Australia", "Dubai, UAE"]
 
+horses = []
 20.times do
-  Horse.create!(
+  horses << Horse.create!(
     user: users.sample,
     name: Faker::Creature::Horse.unique.name,
     breed: breeds.sample,
@@ -45,4 +47,26 @@ locations = ["Newmarket, UK", "Lexington, USA", "Chantilly, France", "Sydney, Au
   )
 end
 
+# Create bookings
+puts "Creating bookings..."
+statuses = ["pending", "accepted", "declined"]
+
+30.times do
+  horse = horses.sample
+  user = (users - [horse.user]).sample # Ensures requester isn't the horse owner
+
+  start_date = Date.today + rand(1..30) # Random date within the next month
+  end_date = start_date + rand(1..7) # Booking lasts 1-7 days
+
+  Booking.create!(
+    user: user,
+    horse: horse,
+    start_date: start_date,
+    end_date: end_date,
+    status: statuses.sample, # Randomly assigns status
+    price_at_booking: horse.stud_fee
+  )
+end
+
 puts "Seeding completed!"
+
