@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show update]
-  before_action :authenticate_user!, only: %i[index new create update]
 
   def index
     # Show bookings for the current user (both requested & received)
