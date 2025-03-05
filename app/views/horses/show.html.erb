@@ -77,15 +77,18 @@
             <i class="fa fa-arrow-left"></i>
           <% end %>
 
-          <%= link_to edit_horse_path(@horse), class: "btn btn-warning me-2" do %>
-            <i class="fa fa-edit"></i>
+                  <% if current_user && current_user.id == @horse.user_id %>
+            <%= link_to edit_horse_path(@horse), class: "btn btn-warning me-2" do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
+
+            <%= link_to horse_path(@horse),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                        class: "btn btn-danger" do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
           <% end %>
 
-          <%= link_to horse_path(@horse),
-                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                      class: "btn btn-danger" do %>
-            <i class="fa fa-trash"></i>
-          <% end %>
         </div>
 
         <!-- Main content (image on the left, details on the right) -->
@@ -123,4 +126,3 @@
     </div>
   </div>
 </div>
-git
