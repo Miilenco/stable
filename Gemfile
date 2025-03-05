@@ -59,6 +59,9 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 
+# Faker gem for seedfile
+gem "faker"
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -77,9 +80,6 @@ group :development do
 
   # Autoreloads html/css as you edit
   gem "hotwire-livereload"
-
-  # Faker gem for seedfile
-  gem "faker"
 end
 
 group :test do

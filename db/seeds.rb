@@ -23,6 +23,8 @@ users = []
 10.times do
   users << User.create!(
     email: Faker::Internet.unique.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     password: "password123"
   )
 end
@@ -30,7 +32,48 @@ end
 # Create horses
 puts "Creating horses..."
 breeds = ["Thoroughbred", "Arabian", "Quarter Horse", "Andalusian", "Friesian"]
-locations = ["Newmarket, UK", "Lexington, USA", "Chantilly, France", "Sydney, Australia", "Dubai, UAE"]
+locations = [
+  "1600 Amphitheatre Parkway, Mountain View, CA 94043, USA",
+  "10 Downing Street, London SW1A 2AA, UK",
+  "221B Baker Street, London NW1 6XE, UK",
+  "1 Infinite Loop, Cupertino, CA 95014, USA",
+  "Eiffel Tower, Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France",
+  "Brandenburg Gate, Pariser Platz, 10117 Berlin, Germany",
+  "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia",
+  "Shibuya Crossing, 2 Chome-2-1 Dogenzaka, Shibuya City, Tokyo 150-0043, Japan",
+  "Taj Mahal, Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001, India",
+  "Statue of Liberty, Liberty Island, New York, NY 10004, USA",
+  "Christ the Redeemer, Parque Nacional da Tijuca - Alto da Boa Vista, Rio de Janeiro - RJ, 22290-330, Brazil",
+  "Colosseum, Piazza del Colosseo, 1, 00184 Roma RM, Italy",
+  "The Louvre, Rue de Rivoli, 75001 Paris, France",
+  "Machu Picchu, Aguas Calientes, Cusco 08002, Peru",
+  "Petronas Towers, Kuala Lumpur City Centre, 50088 Kuala Lumpur, Malaysia",
+  "Niagara Falls, 6650 Niagara Pkwy, Niagara Falls, ON L2E 3E8, Canada",
+  "Burj Khalifa, 1 Sheikh Mohammed bin Rashid Blvd, Dubai, UAE",
+  "Grand Canyon Visitor Center, 450 AZ-64, Grand Canyon Village, AZ 86023, USA",
+  "St. Basils Cathedral, Red Square, Moscow, Russia, 109012",
+  "Table Mountain, Cape Town, 8001, South Africa",
+  "Empire State Building, 20 W 34th St, New York, NY 10001, USA",
+  "Times Square, Manhattan, NY 10036, USA",
+  "Buckingham Palace, London SW1A 1AA, UK",
+  "Hollywood Sign, Los Angeles, CA 90068, USA",
+  "Champs-Élysées, 75008 Paris, France",
+  "Sagrada Familia, Carrer de Mallorca, 401, 08013 Barcelona, Spain",
+  "The White House, 1600 Pennsylvania Avenue NW, Washington, DC 20500, USA",
+  "Giza Pyramids, Al Haram, Giza Governorate 3512201, Egypt",
+  "Forbidden City, 4 Jingshan Front St, Dongcheng, Beijing, China",
+  "Mount Everest Base Camp, Solukhumbu, Nepal",
+  "Santorini, 84700, Greece",
+  "Berlin TV Tower, Panoramastraße 1A, 10178 Berlin, Germany",
+  "Copacabana Beach, Avenida Atlântica, Rio de Janeiro, RJ, Brazil",
+  "The Great Wall of China, Huairou, Beijing, China",
+  "Stonehenge, Salisbury SP4 7DE, UK",
+  "Grand Bazaar, Beyazit, İstanbul, Turkey",
+  "Golden Gate Bridge, San Francisco, CA 94129, USA",
+  "Mount Fuji, Kitayama, Fujinomiya, Shizuoka 418-0112, Japan",
+  "Marina Bay Sands, 10 Bayfront Ave, Singapore 018956",
+  "Christchurch Cathedral, Christchurch Central City, Christchurch 8011, New Zealand"
+]
 
 horses = []
 20.times do
