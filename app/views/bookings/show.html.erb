@@ -1,16 +1,75 @@
-<h1>Booking Details</h1>
+<!-- show.html.erb -->
+<div class="container mt-4">
+  <div class="row">
+    <!-- Left Column: Booking Details & Horse Image -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Booking Details</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Horse:</strong> <%= @booking.horse.name %>
+            </li>
+            <li class="list-group-item">
+              <strong>Booked by:</strong> <%= @booking.user.email %>
+            </li>
+            <li class="list-group-item">
+              <strong>Start Date:</strong> <%= @booking.start_date %>
+            </li>
+            <li class="list-group-item">
+              <strong>End Date:</strong> <%= @booking.end_date %>
+            </li>
+            <li class="list-group-item">
+              <strong>Price at Booking:</strong> £<%= @booking.price_at_booking %>
+            </li>
+            <li class="list-group-item">
+              <strong>Status:</strong> <%= @booking.status.capitalize %>
+            </li>
+          </ul>
 
-<p>Horse: <%= @booking.horse.name %></p>
-<p>Booked by: <%= @booking.user.email %></p>
-<p>Start Date: <%= @booking.start_date %></p>
-<p>End Date: <%= @booking.end_date %></p>
-<p>Price at Booking: £<%= @booking.price_at_booking %></p>
-<p>Status: <%= @booking.status.capitalize %></p>
+          <!-- Horse Image -->
+          <div class="mt-3 text-center">
+            <% if @booking.horse.pictures.attached? %>
+              <!-- Smaller image using inline max-width -->
+              <%= cl_image_tag(
+                    @booking.horse.pictures.first.key,
+                    class: "img-fluid border rounded",
+                    style: "max-width: 300px;"
+                  ) %>
+            <% else %>
+              <%= image_tag "backup-image.png",
+                  alt: "No Image",
+                  class: "img-fluid border rounded",
+                  style: "max-width: 300px; border-color: #ccc;" %>
+            <% end %>
+          </div>
 
-<% if @booking.pending? && current_user == @booking.horse.user %>
-  <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-success" %>
-  <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-danger" %>
-<% end %>
+          <!-- Buttons -->
+          <div class="mt-4">
+            <% if @booking.pending? && current_user == @booking.horse.user %>
+              <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-success me-2" %>
+              <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-danger me-2" %>
+            <% end %>
+            <%= link_to "Back to horses", horses_path, class: "btn btn-primary me-2" %>
+            <%= link_to "Back to bookings", bookings_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<%= link_to "Back to horses", horses_path, class: "btn btn-primary" %>
-<%= link_to "Back to bookings", bookings_path, class: "btn btn-primary" %>
+    <!-- Right Column: Map Placeholder -->
+    <div class="col-md-6 mb-4">
+      <h2 class="mb-3">Where to pick up your horse</h2>
+      <div id="map-placeholder"
+           style="background-color: #f8f9fa;
+                  height: 400px;
+                  border: 2px dashed #ccc;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;">
+        Map will go here
+      </div>
+    </div>
+  </div>
+</div>
+

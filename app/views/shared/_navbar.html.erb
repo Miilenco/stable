@@ -1,9 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to "horses", class: "navbar-brand" do %>
       <%= image_tag "horse-logo.svg" %>
     <% end %>
 
+    <!-- Center-aligned website title (always centered) -->
+    <div class="position-absolute start-50 translate-middle-x">
+      <%= link_to "Stable", horses_path, class: "navbar-heading text-uppercase fw-bold fs-3 text-decoration-none" %>
+    </div>
+
+    <!-- Navbar toggle button for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,11 +18,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Bookings", "bookings", class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+
+          <!-- Profile dropdown -->
           <li class="nav-item dropdown">
             <% if current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key, width: 40, height: 40, crop: :thumb, gravity: :face,
@@ -25,8 +30,8 @@
               <%= image_tag "no-profile-picture", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "My horses", "#", class: "dropdown-item" %>
+              <%= link_to "Account details", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
             </div>
           </li>
