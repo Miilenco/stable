@@ -1,18 +1,36 @@
-<%= simple_form_for [@horse, @booking], html: { data: { controller: "datepicker", datepicker_price_at_booking_value: @horse.stud_fee } } do |f| %>
-  <%= f.hidden_field :horse_id, value: @horse.id %> <!-- Ensure horse_id is sent -->
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title text-center">Request a Booking</h2>
+      <div class="form-container">
+        <%= simple_form_for [@horse, @booking], html: { data: { controller: "datepicker", datepicker_price_at_booking_value: @horse.stud_fee } } do |f| %>
+          <%= f.hidden_field :horse_id, value: @horse.id %>
 
-  <%= f.input :start_date, as: :string, label: "Start Date", input_html: { data: { datepicker_target: "startDate" } } %>
-  <%= f.input :end_date, as: :string, label: "End Date", input_html: { data: { datepicker_target: "endDate" } } %>
+          <div class="mb-3">
+            <%= f.input :start_date, as: :string, label: "Start Date", input_html: { class: "form-control", data: { datepicker_target: "startDate" } } %>
+          </div>
 
-  <%# Hidden input for duration (but not tied to ActiveRecord) %>
-  <input type="hidden" id="duration" data-datepicker-target="duration">
+          <div class="mb-3">
+            <%= f.input :end_date, as: :string, label: "End Date", input_html: { class: "form-control", data: { datepicker_target: "endDate" } } %>
+          </div>
 
-  <%# Total cost field - not using `f.input` to avoid ActiveRecord errors %>
-  <div class="mb-3">
-    <label for="total_cost">Total Cost</label>
-    <input type="text" id="total_cost" class="form-control" data-datepicker-target="totalCost" readonly>
+          <%# Hidden input for duration %>
+          <input type="hidden" id="duration" data-datepicker-target="duration">
+
+          <%# Total cost display with £ sign, styled properly %>
+          <div class="mb-3">
+            <label>Total Cost (£)</label>
+            <div class="input-group">
+              <span class="input-group-text">£</span>
+              <input type="text" id="total_cost" class="form-control border-0 bg-light" data-datepicker-target="totalCost" readonly>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <%= f.submit "Request Booking", class: "btn btn-primary px-4 mt-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <%= f.submit "Request Booking", class: "btn btn-primary" %>
-<% end %>
-
+</div>
