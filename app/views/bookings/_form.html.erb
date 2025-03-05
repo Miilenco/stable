@@ -1,7 +1,9 @@
 <%= simple_form_for [@horse, @booking] do |f| %>
   <%= f.hidden_field :horse_id, value: @horse.id %> <!-- Ensure horse_id is sent -->
-  <%= f.input :start_date, as: :date, label: "Start Date" %>
-  <%= f.input :end_date, as: :date, label: "End Date" %>
+
+
+  <%= f.input :start_date, as: :string, label: "Start Date", input_html: { data: { controller: "datepicker" } } %> <!-- Add data controller attribute -->
+  <%= f.input :end_date, as: :string, label: "End Date", input_html: { data: { controller: "datepicker" } } %>
 
   <%= f.input :price_at_booking, as: :decimal, label: "Price at Booking", step: 0.01, input_html: { value: @horse.stud_fee, readonly: true } %>
 
