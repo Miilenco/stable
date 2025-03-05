@@ -110,12 +110,12 @@
             <p><strong>Stud Fee:</strong> <%= number_to_currency(@horse.stud_fee) %></p>
 
             <% if user_signed_in? %>
-              <h4>BOOK A SH*G</h4>
+              <h4>BOOK STALLION</h4>
               <%= render 'bookings/form', horse: @horse, booking: @booking %>
             <% else %>
               <div class="text-center mt-4">
                 <%= link_to new_user_session_path, class: "btn btn-dark btn-lg w-100" do %>
-                  BOOK A SH*G
+                  BOOK STALLION
                 <% end %>
               </div>
             <% end %>
