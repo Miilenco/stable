@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
   end
 
   # No delete. Status can be changed to cancelled or declined
-
+  
   private
 
   def set_booking
