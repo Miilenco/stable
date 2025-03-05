@@ -23,6 +23,8 @@ users = []
 10.times do
   users << User.create!(
     email: Faker::Internet.unique.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     password: "password123"
   )
 end
@@ -30,7 +32,6 @@ end
 # Create horses
 puts "Creating horses..."
 breeds = ["Thoroughbred", "Arabian", "Quarter Horse", "Andalusian", "Friesian"]
-locations = ["Newmarket, UK", "Lexington, USA", "Chantilly, France", "Sydney, Australia", "Dubai, UAE"]
 
 horses = []
 20.times do
