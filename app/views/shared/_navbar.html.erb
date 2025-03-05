@@ -1,8 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to "horses", class: "navbar-brand" do %>
       <%= image_tag "horse-logo.svg" %>
     <% end %>
+
+    <!-- Center-aligned website title -->
+    <div class="mx-auto">
+      <%= link_to "Stable", horses_path, class: "navbar-heading text-uppercase fw-bold fs-3 text-decoration-none" %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
