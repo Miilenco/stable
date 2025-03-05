@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index, :show, :update]
+
+  resources :users, only: [:show]
+
 end
