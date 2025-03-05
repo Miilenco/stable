@@ -101,10 +101,14 @@
              data-bs-target="#horseModal-<%= horse.id %>">
 
           <!-- Image -->
-          <%= image_tag "backup-image.png",
-              alt: "No Image",
-              class: "card-img-top img-fluid border rounded mb-3",
-              style: "border-color: #ccc;" %>
+          <% if horse.pictures.attached? %>
+            <%= cl_image_tag horse.pictures.first.key %>
+          <% else %>
+            <%= image_tag "backup-image.png",
+                alt: "No Image",
+                class: "card-img-top img-fluid border rounded mb-3",
+                style: "border-color: #ccc;" %>
+          <% end %>
 
           <!-- Card Body -->
           <div class="card-body">
@@ -136,7 +140,11 @@
 
               <!-- Body -->
               <div class="modal-body">
-                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+                <% if horse.pictures.attached? %>
+                  <%= cl_image_tag horse.pictures.first.key %>
+                <% else %>
+                  <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+                <% end %>
                 <p>
                   <strong>Breed:</strong> <%= horse.breed %><br>
                   <strong>Age:</strong> <%= horse.age %><br>
