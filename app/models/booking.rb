@@ -18,6 +18,8 @@ class Booking < ApplicationRecord
   end
 
   def cannot_book_own_horse
+    return if horse.nil? || user.nil? # Prevents undefined method errors
+
     if horse.user == user
       errors.add(:user, "cannot book your own horse")
     end
