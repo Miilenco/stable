@@ -13,7 +13,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #faf9f7;
+      background-color:rgb(210, 217, 243);
       font-family: "Arial", sans-serif;
       color: #333;
     }
@@ -46,7 +46,7 @@
       border-radius: 10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       overflow: hidden;
-      background-color: #ebcab5; /* Unified background color for cards */
+      background-color:rgb(255, 255, 255); /* Unified background color for cards */
       cursor: pointer;
     }
     .card.custom-card:hover {
@@ -72,8 +72,8 @@
 
     /* Primary Button (Search, Book) */
     .btn.btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
+      background-color:rgb(68, 129, 122);;
+      border-color:rgb(0, 0, 0);
     }
 
     /* Secondary Button (Close) */
@@ -89,7 +89,7 @@
 
     /* Modal: same background as card */
     .modal-content {
-      background-color: #ebcab5;
+      background-color: rgb(210, 217, 243);
       border-radius: 10px;
     }
 
@@ -196,29 +196,40 @@
       <!-- Iterate over your horses -->
       <% @horses.each do |horse| %>
         <div class="col">
-          <!-- Card (clickable) -->
-          <div class="card custom-card h-100 p-3"
-               data-bs-toggle="modal"
-               data-bs-target="#horseModal-<%= horse.id %>">
-            <!-- Image -->
-            <% if horse.pictures.attached? %>
-              <%= cl_image_tag horse.pictures.first.key,
-                  class: "card-img-top img-fluid border rounded mb-3" %>
-            <% else %>
-              <%= image_tag "backup-image.png",
-                  alt: "No Image",
-                  class: "card-img-top img-fluid border rounded mb-3" %>
-            <% end %>
+         <div class="col">
+  <!-- Card (clickable) -->
+  <div class="card custom-card h-100 p-3 position-relative"
+       data-bs-toggle="modal"
+       data-bs-target="#horseModal-<%= horse.id %>">
 
-            <!-- Card Body -->
-            <div class="card-body">
-              <h5 class="card-title"><%= horse.name %></h5>
-              <p class="card-text">
-                <strong>Location:</strong> <%= horse.location %><br>
-                <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
-              </p>
-            </div>
-          </div>
+    <!-- Image -->
+    <% if horse.pictures.attached? %>
+      <%= cl_image_tag horse.pictures.first.key,
+          class: "card-img-top img-fluid border rounded mb-3" %>
+    <% else %>
+      <%= image_tag "backup-image.png",
+          alt: "No Image",
+          class: "card-img-top img-fluid border rounded mb-3" %>
+    <% end %>
+
+    <!-- Card Body -->
+    <div class="card-body">
+      <h5 class="card-title"><%= horse.name %></h5>
+      <p class="card-text">
+        <strong>Location:</strong> <%= horse.location %><br>
+        <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+      </p>
+    </div>
+
+    <!-- Eye Icon Button for Modal -->
+    <button class="btn btn-dark position-absolute bottom-0 end-0 m-2"
+            data-bs-toggle="modal"
+            data-bs-target="#horseModal-<%= horse.id %>">
+      <i class="fa fa-eye"></i>
+    </button>
+  </div>
+</div>
+
 
           <!-- Modal (same color as card) -->
           <div class="modal fade"
