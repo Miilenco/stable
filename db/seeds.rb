@@ -19,14 +19,28 @@ User.destroy_all
 
 # Create users
 puts "Creating users..."
+# hash for profile pictures
+profile_picture_dir = Dir.new('app/assets/images/profile_pictures/')
+profile_picture_files = profile_picture_dir.children.to_h { |file| [file, "#{profile_picture_dir.path}#{file}"] }
+
 users = []
 10.times do
-  users << User.create!(
+  new_user = User.new(
     email: Faker::Internet.unique.email,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     password: "password123"
   )
+  # pick a random profile picture
+  random_profile_picture = profile_picture_files.keys.sample
+  new_user.profile_picture.attach(
+    io: File.open(profile_picture_files[random_profile_picture]),
+    filename: random_profile_picture,
+    content_type: "image/jpg"
+  )
+  # save to database
+  new_user.save!
+  users << new_user
 end
 
 # Create horses
@@ -75,9 +89,13 @@ locations = [
   "Christchurch Cathedral, Christchurch Central City, Christchurch 8011, New Zealand"
 ]
 
+# hash for horse pictures
+horse_picture_dir = Dir.new('app/assets/images/horse_pictures/')
+horse_picture_files = horse_picture_dir.children.to_h { |file| [file, "#{horse_picture_dir.path}#{file}"] }
+
 horses = []
 20.times do
-  horses << Horse.create!(
+  new_horse = Horse.new(
     user: users.sample,
     name: Faker::Creature::Horse.unique.name,
     breed: breeds.sample,
@@ -88,6 +106,19 @@ horses = []
     progeny_success: Faker::Lorem.sentence(word_count: 10),
     race_record: Faker::Lorem.paragraph(sentence_count: 3)
   )
+
+  3.times do
+    # pick a random horse picture
+    random_horse_picture = horse_picture_files.keys.sample
+    new_horse.pictures.attach(
+      io: File.open(horse_picture_files[random_horse_picture]),
+      filename: random_horse_picture,
+      content_type: "image/jpg"
+    )
+  end
+
+  new_horse.save!
+  horses << new_horse
 end
 
 # Create bookings
