@@ -20,5 +20,5 @@
 // Darkening effect on hover (consistent for both navbar heading and buttons)
 .navbar-heading:hover,
 .nav-link.text-primary:hover {
-  color: darken(#283618, 15%) !important; // Adjust darken percentage as needed
+  color: darken(#283618, 5%) !important; // Adjust darken percentage as needed
 }
