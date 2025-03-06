@@ -134,21 +134,19 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>"><strong><%= horse.name %></strong></h5>
+              <h5 class="modal-title fs-4 fw-bold" id="horseModalLabel-<%= horse.id %>"><%= horse.name %></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <!-- Content to be added later -->
+            <div class="modal-body text-center">
               <% if horse.pictures.attached? %>
                 <%= cl_image_tag horse.pictures.first.key, class: "img-fluid mb-3" %>
               <% else %>
                 <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
               <% end %>
-              <%= horse.name %>
-              <%= horse.breed %>
-              <%= horse.age %>
-              <%= horse.location %>
-              <%= horse.stud_fee %>
+              <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
+              <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
+              <p class="mb-1"><strong>Location:</strong> <%= horse.location %></p>
+              <p class="mb-1"><strong>Stud Fee:</strong> <em><%= number_to_currency(horse.stud_fee) %></em></p>
             </div>
           </div>
         </div>
