@@ -3,9 +3,9 @@
   <div class="col-md-8">
     <!-- Large Image -->
     <% if horse.pictures.attached? %>
-      <%= cl_image_tag(horse.pictures.first.key, class: "img-fluid w-100", style: "height: 200px; object-fit: cover;") %>
+      <%= cl_image_tag(horse.pictures.first.key, class: "img-fluid w-100", style: "height: 300px; object-fit: cover;") %>
     <% else %>
-      <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 200px; object-fit: cover;" %>
+      <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 300px; object-fit: cover;" %>
     <% end %>
   </div>
 
@@ -13,13 +13,13 @@
     <% if horse.pictures.attached? && horse.pictures.count > 1 %>
       <% horse.pictures[1..2].each do |pic| %>
         <div class="">
-          <%= cl_image_tag(pic.key, class: "img-fluid w-100", style: "height: 100px; object-fit: cover;") %>
+          <%= cl_image_tag(pic.key, class: "img-fluid w-100", style: "height: 150px; object-fit: cover;") %>
         </div>
       <% end %>
     <% else %>
       <% 2.times do %>
         <div class="">
-          <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 100px; object-fit: cover;" %>
+          <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 150px; object-fit: cover;" %>
         </div>
       <% end %>
     <% end %>
