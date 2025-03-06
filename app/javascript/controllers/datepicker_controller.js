@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
     flatpickr(this.startDateTarget, {
       altInput: true,
-      altFormat: "F j, Y",
+      altFormat: "d F, y",
       dateFormat: "Y-m-d",
       minDate: "today",
       onChange: () => this.calculateCost()
@@ -16,7 +16,7 @@ export default class extends Controller {
 
     flatpickr(this.endDateTarget, {
       altInput: true,
-      altFormat: "F j, Y",
+      altFormat: "d F, y",
       dateFormat: "Y-m-d",
       minDate: "today",
       onChange: () => this.calculateCost()
