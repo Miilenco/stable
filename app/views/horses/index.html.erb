@@ -89,7 +89,7 @@
 
   <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
-  
+
         <!-- Iterate over your horses -->
     <% @horses.each do |horse| %>
       <div class="col">
@@ -116,6 +116,11 @@
                 <strong>Location:</strong> <%= horse.location %><br>
                 <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
               </p>
+              <div class="text-center pb-3">
+                <button type="button" class="btn btn-sm position-absolute top-0 end-0 m-2">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </div>
             </div>
           </div>
         <% end %> <!-- Closing link_to block -->
