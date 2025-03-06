@@ -133,7 +133,7 @@
         <% end %> <!-- Closing link_to block -->
       </div>
 
-      <!-- Empty Modal -->
+      <!-- Modal -->
       <div class="modal fade" id="horseModal-<%= horse.id %>" tabindex="-1" aria-labelledby="horseModalLabel-<%= horse.id %>" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -151,6 +151,7 @@
               <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
               <p class="mb-1"><strong>Location:</strong> <%= horse.location %></p>
               <p class="mb-1"><strong>Stud Fee:</strong> <em><%= number_to_currency(horse.stud_fee) %></em></p>
+              <%= link_to "View Details", horse_path(horse), class: "btn btn-primary mt-3" %>
             </div>
           </div>
         </div>
