@@ -115,6 +115,15 @@
               <strong>Location:</strong> <%= horse.location %><br>
               <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
             </p>
+             <!-- Eye Icon Button to Open Modal -->
+      <div class="text-center pb-3">
+        <button type="button" class="btn btn-outline-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#horseModal-<%= horse.id %>">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
+
           </div>
         </div>
 
