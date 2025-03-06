@@ -32,9 +32,16 @@
         <% if @horse.user_id != current_user.id %>
           <%= render 'bookings/form', horse: @horse, booking: @booking %>
         <% else %>
-          <div id="mapbox-placeholder" style="height: 300px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-            <h3>Mapbox Placeholder: Where to pick up your horse</h3>
-          </div>
+            <div id="map-owner"
+                 style="height: 100%; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;"
+                 data-controller="map"
+                 data-map-markers-value='<%= [{
+                   lat: @horse.latitude,
+                   lng: @horse.longitude,
+                   info_window_html: render_info_window(@horse)
+                 }].to_json %>'
+                 data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
         <% end %>
       <% else %>
         <div class="alert alert-info text-center">
@@ -44,12 +51,19 @@
     </div>
   </div>
 
-  <%# Render the bottom mapbox row only if the current user is not signed in or is viewing someone else's horse %>
+  <%# Render the bottom mapbox row only if no user is signed in or if the current user is viewing someone else's horse %>
   <% if !user_signed_in? || (@horse.user_id != current_user.id) %>
     <div class="row">
       <div class="col">
-        <div id="mapbox-placeholder" style="height: 300px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-          <h3>Mapbox Placeholder: Where to pick up your horse</h3>
+        <div id="map-visitor"
+             style="height: 300px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;"
+             data-controller="map"
+             data-map-markers-value='<%= [{
+               lat: @horse.latitude,
+               lng: @horse.longitude,
+               info_window_html: render_info_window(@horse)
+             }].to_json %>'
+             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>
     </div>
