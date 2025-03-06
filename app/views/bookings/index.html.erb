@@ -62,8 +62,7 @@
                 <% total_cost = duration * booking.horse.stud_fee %>
                 <span>Total Cost: £<%= total_cost %></span><br>
                 <span><%= duration %> days</span><br>
-                <span>Start: <%= booking.start_date %></span><br>
-                <span>End: <%= booking.end_date %></span>
+                <span><%= booking.start_date.strftime("%d/%m/%y") %> - <%= booking.end_date.strftime("%d/%m/%y") %></span>
               </div>
             </div>
           </div>
