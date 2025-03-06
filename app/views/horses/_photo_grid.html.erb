@@ -21,7 +21,7 @@
             <%= cl_image_tag pic.key, class: "img-fluid w-100", style: "height: 150px; object-fit: cover;" %>
           </button>
         </div>
-      <% end %> 
+      <% end %>
     <% else %>
       <% 2.times do %>
         <div class="">
@@ -43,7 +43,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Content will go here later -->
+        <!-- <%= render "shared/carousel", horse: horse %> -->
       </div>
     </div>
   </div>
