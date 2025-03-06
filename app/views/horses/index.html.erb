@@ -94,9 +94,10 @@
       <div class="col">
         <!-- Card with custom-card class for rounded + hover effect -->
         <div class="card custom-card h-100 p-3"
-             style="cursor: pointer; background-color: #ccd5ae;"
+             style="cursor: pointer; background-color: #;"
              data-bs-toggle="modal"
-             data-bs-target="#horseModal-<%= horse.id %>">
+             data-bs-target="#horseModal-<%= horse.id %>"
+             data-horse-url="<%= horse_path(horse) %>">
 
           <!-- Image -->
           <% if horse.pictures.attached? %>

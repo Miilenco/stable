@@ -1,2 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.custom-card .card-body {
+  flex-grow: 1;
+}
