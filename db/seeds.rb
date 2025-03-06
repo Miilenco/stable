@@ -88,6 +88,133 @@ locations = [
   "Marina Bay Sands, 10 Bayfront Ave, Singapore 018956",
   "Christchurch Cathedral, Christchurch Central City, Christchurch 8011, New Zealand"
 ]
+pedigrees = [
+  "Sire: Royal Gladiator
+  Dam: Elite Dancer",
+  "Sire: Freedom's Flight
+  Dam: Whispering Willow",
+  "Sire: Lightning Bolt
+  Dam: Victory Lane",
+  "Sire: Desert King
+  Dam: Sunset Belle",
+  "Sire: Cowboy Classic
+  Dam: Prairie Rose",
+  "Sire: War Paint
+  Dam: Silver Starlet",
+  "Sire: Ironclad Valor
+  Dam: Silken Whisper",
+  "Sire: Crimson Comet
+  Dam: Azure Belle",
+  "Sire: Shadow Dancer
+  Dam: Moonlit Melody",
+  "Sire: Golden Sovereign
+  Dam: Emerald Tiara",
+  "Sire: Thunderous Heart
+  Dam: Starlight Grace",
+  "Sire: Regal Eclipse
+  Dam: Velvet Shadow",
+  "Sire: Brave Prospect
+  Dam: Diamond Dew",
+  "Sire: Noble Knight
+  Dam: Lady Liberty",
+  "Sire: Wild Tempest
+  Dam: Gentle Breeze",
+  "Sire: Painted Warrior
+  Dam: Summer Rain"
+]
+progeny_success_options = [
+  "Crown Jewel (2019): Winner of the 1000 Guineas (Grade 1), and the Fillies' Mile (Grade 1). Earnings: £1,800,000.
+  King's Ransom (2020): Winner of the Irish Derby (Grade 1) and the St Leger Stakes (Grade 1). Earnings: €2,500,000.
+  Ascending Star (2021): Winner of the Breeders' Cup Juvenile (Grade 1). Earnings: $1,500,000.
+  Demonstrates a strong propensity to produce stamina horses, with high percentages of offspring winning at distances of 10 furlongs and above.",
+  "Flash Fire (2017): Winner of the Dubai Golden Shaheen (Grade 1). Earnings: $2,000,000.
+  Rapid Run (2018): Winner of the July Cup (Grade 1) and the Diamond Jubilee Stakes (Grade 1). Earnings: £1,600,000.
+  Velocity Queen (2022): Winner of the Breeders' Cup Sprint (Grade 1). Earnings: $1,000,000.
+  Consistently produces offspring with exceptional early speed and high finishing velocity, excelling in sprint races.",
+  "Heart of Gold (2016): Winner of the Melbourne Cup (Grade 1). Earnings: AUD$4,400,000.
+  Spirit of Victory (2019): Winner of the Japan Cup (Grade 1). Earnings: ¥300,000,000.
+  Lasting Legacy (2023): Winner of the Belmont Stakes (Grade 1). Earnings: $1,500,000.
+  Known for producing horses with exceptional stamina and resilience, consistently performing well in long-distance races and major international events.",
+  "Lightning Strike (2018): Winner of the Breeders' Cup Sprint (Grade 1). Earnings: $1,800,000.
+  Rapid Fire (2020): Winner of the July Cup (Grade 1). Earnings: £1,200,000.
+  Speed Queen (2022): Winner of the Golden Shaheen (Grade 1). Earnings: $2,000,000.
+  Known for producing extremely fast offspring, excelling in sprint distances on dirt and turf.",
+  "Royal Decree (2017): Winner of the Epsom Derby (Grade 1). Earnings: £1,600,000.
+  Majestic Crown (2019): Winner of the Irish Derby (Grade 1). Earnings: €1,400,000.
+  Sovereign Rule (2021): Winner of the Prix du Jockey Club (Grade 1). Earnings: €1,500,000.
+  Known for producing classic distance horses, with strong stamina and excellent temperament.",
+  "Desert Mirage (2015): Winner of the Dubai World Cup (Grade 1). Earnings: $6,000,000.
+` Oasis Dream (2018): Winner of the Saudi Cup (Grade 1). Earnings: $10,000,000.
+` Sandstorm Queen (2020): Winner of the Pegasus World Cup (Grade 1). Earnings: $1,750,000.
+` Known for producing dirt track specialists, with high speed and exceptional resilience in international competition.",
+  "Ocean Tide (2016): Winner of the Melbourne Cup (Grade 1). Earnings: AUD$4,000,000.
+  Coastal Cruise (2019): Winner of the Caulfield Cup (Grade 1). Earnings: AUD$3,000,000.
+  Harbor Master (2021): Winner of the Japan Cup (Grade 1). Earnings: ¥350,000,000.
+  Known for producing staying horses, with strong finishes and adaptability to various turf courses."
+]
+race_record_options = [
+  "Age 2:
+    Maiden Special Weight, Santa Anita Park - 1st
+    Del Mar Futurity (Grade 1), Del Mar - 3rd
+    Breeders' Cup Juvenile (Grade 1), Churchill Downs - 2nd
+  Age 3:
+    Santa Anita Derby (Grade 1), Santa Anita Park - 2nd
+    Kentucky Derby (Grade 1), Churchill Downs - 4th
+    Preakness Stakes (Grade 1), Pimlico - 1st
+    Belmont Stakes (Grade 1), Belmont Park - 3rd
+    Travers Stakes (Grade 1), Saratoga- 2nd
+  Age 4:
+    Pegasus World Cup (Grade 1), Gulfstream Park- 3rd
+    Dubai World Cup (Grade 1), Meydan Racecourse- 1st",
+  "Age 2:
+    Maiden Special Weight, Ascot - 1st
+    Royal Lodge Stakes (Grade 2), Ascot - 2nd
+  Age 3:
+    2000 Guineas (Grade 1), Newmarket - 3rd
+    Irish Derby (Grade 1), Curragh - 1st
+    Prix du Jockey Club (Grade 1), Chantilly - 2nd
+    Queen Elizabeth II Stakes (Grade 1), Ascot - 1st
+  Age 4:
+    Hong Kong Mile (Grade 1), Sha Tin - 1st
+    Dubai Turf (Grade 1), Meydan - 2nd
+  Age 5:
+    Breeders' Cup Mile (Grade 1), Keeneland - 3rd",
+  "Age 2:
+    Maiden Special Weight, Del Mar - 1st
+    Chandelier Stakes (Grade 1), Santa Anita - 2nd
+  Age 3:
+    Santa Anita Oaks (Grade 1), Santa Anita - 1st
+    Kentucky Oaks (Grade 1), Churchill Downs - 3rd
+    Acorn Stakes (Grade 1), Belmont Park - 2nd
+    Coaching Club American Oaks (Grade 1), Saratoga - 1st
+  Age 4:
+    Breeders' Cup Distaff (Grade 1), Del Mar - 1st
+    Personal Ensign Stakes (Grade 1), Saratoga - 2nd
+  Age 5:
+    Apple Blossom Handicap (Grade 1), Oaklawn Park - 1st",
+  "Age 3:
+    Maiden Claiming, Gulfstream Park - 2nd
+    Maiden Claiming, Gulfstream Park - 1st
+    Allowance Optional Claiming, Gulfstream Park - 3rd
+  Age 4:
+    Allowance, Tampa Bay Downs - 2nd
+    Allowance, Tampa Bay Downs - 1st
+    Claiming Race, Gulfstream Park - 1st
+  Age 5:
+    Allowance, Gulfstream Park - 3rd
+    Allowance Optional Claiming, Gulfstream Park- 2nd",
+  "Age 2:
+    Maiden Special Weight, Turf Paradise - 1st
+    Arizona Breeders' Futurity, Turf Paradise - 2nd
+  Age 3:
+    Sunland Derby (Grade 3), Sunland Park - 3rd
+    Los Alamitos Derby (Grade 3), Los Alamitos - 1st
+  Age 4:
+    Hollywood Gold Cup (Grade 1), Santa Anita - 3rd
+    Bing Crosby Stakes (Grade 1), Del Mar - 2nd
+  Age 5:
+    Clement L. Hirsch Stakes (Grade 1), Del Mar - 1st"
+]
 
 # hash for horse pictures
 horse_picture_dir = Dir.new('app/assets/images/horse_pictures/')
@@ -102,9 +229,9 @@ horses = []
     age: rand(3..15),
     location: locations.sample,
     stud_fee: rand(500..5000).to_f,
-    pedigree: Faker::Lorem.sentence(word_count: 5),
-    progeny_success: Faker::Lorem.sentence(word_count: 10),
-    race_record: Faker::Lorem.paragraph(sentence_count: 3)
+    pedigree: pedigrees.sample,
+    progeny_success: progeny_success_options.sample,
+    race_record: race_record_options.sample
   )
 
   3.times do
