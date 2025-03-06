@@ -134,11 +134,16 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">Horse Details</h5>
+              <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>"><%= horse.name %></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <!-- Content to be added later -->
+              <% if horse.pictures.attached? %>
+                <%= cl_image_tag horse.pictures.first.key, class: "img-fluid mb-3" %>
+              <% else %>
+                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+              <% end %>
             </div>
           </div>
         </div>
