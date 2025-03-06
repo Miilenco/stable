@@ -142,11 +142,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-              <% if horse.pictures.attached? %>
-                <%= cl_image_tag horse.pictures.first.key, class: "img-fluid mb-3" %>
-              <% else %>
-                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
-              <% end %>
+              <%= render 'shared/carousel', horse: horse %>
               <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
               <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
               <p class="mb-1"><strong>Location:</strong> <%= horse.location %></p>
