@@ -17,8 +17,9 @@ $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
-$light-brown:      $light-brown;
+$light-brown:$light-brown;
 $brown:      $brown;
+$secondary:  $dark-brown;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
@@ -33,3 +34,4 @@ $border-radius-xxl:           1rem;
 
 $theme-colors: map-merge($theme-colors, ( "light-brown": $light-brown ));
 $theme-colors: map-merge($theme-colors, ( "brown": $brown ));
+$theme-colors: map-merge($theme-colors, ( "secondary": $secondary ));
