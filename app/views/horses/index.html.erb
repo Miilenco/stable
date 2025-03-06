@@ -117,7 +117,7 @@
                   <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
                 </div>
               </div>
-              <div class="text-center pb-3">
+              <div class="text-center">
                 <button type="button" class="btn quick-view-btn rounded-circle position-absolute top-0 end-0 m-2"
                         data-bs-toggle="modal"
                         data-bs-target="#horseModal-<%= horse.id %>"
@@ -130,7 +130,7 @@
         <% end %> <!-- Closing link_to block -->
       </div>
 
-      <!-- Empty Modal -->
+      <!-- Modal -->
       <div class="modal fade" id="horseModal-<%= horse.id %>" tabindex="-1" aria-labelledby="horseModalLabel-<%= horse.id %>" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
