@@ -89,88 +89,36 @@
 
   <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
-
-    <!-- Iterate over your horses -->
+  
+        <!-- Iterate over your horses -->
     <% @horses.each do |horse| %>
       <div class="col">
+        <!-- Link to the horse show page - whole card -->
+        <%= link_to horse_path(horse), class: "text-decoration-none text-dark" do %>
+          <!-- Card (clickable) -->
+          <div class="card h-100 p-3 rounded-4"
+              style="cursor: pointer; background-color: #e9edc9;">
 
-        <!-- Card (clickable) -->
-        <div class="card h-100 p-3 rounded-4"
-             style="cursor: pointer; background-color: #e9edc9;"
-             data-bs-toggle="modal"
-             data-bs-target="#horseModal-<%= horse.id %>">
+            <!-- Image -->
+            <% if horse.pictures.attached? %>
+              <%= cl_image_tag horse.pictures.first.key %>
+            <% else %>
+              <%= image_tag "backup-image.png",
+                  alt: "No Image",
+                  class: "card-img-top img-fluid border rounded mb-3",
+                  style: "border-color: #ccc;" %>
+            <% end %>
 
-          <!-- Image -->
-          <% if horse.pictures.attached? %>
-            <%= cl_image_tag horse.pictures.first.key %>
-          <% else %>
-            <%= image_tag "backup-image.png",
-                alt: "No Image",
-                class: "card-img-top img-fluid border rounded mb-3",
-                style: "border-color: #ccc;" %>
-          <% end %>
-
-          <!-- Card Body -->
-          <div class="card-body">
-            <h5 class="card-title"><%= horse.name %></h5>
-            <p class="card-text">
-              <strong>Location:</strong> <%= horse.location %><br>
-              <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
-            </p>
-          </div>
-        </div>
-
-        <!-- Modal for This Horse -->
-        <div class="modal fade"
-             id="horseModal-<%= horse.id %>"
-             tabindex="-1"
-             aria-labelledby="horseModalLabel-<%= horse.id %>"
-             aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <!-- Header -->
-              <div class="modal-header">
-                <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">
-                  <%= horse.name %>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-              </div>
-
-              <!-- Body -->
-              <div class="modal-body">
-                <% if horse.pictures.attached? %>
-                  <%= cl_image_tag horse.pictures.first.key %>
-                <% else %>
-                  <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
-                <% end %>
-                <p>
-                  <strong>Breed:</strong> <%= horse.breed %><br>
-                  <strong>Age:</strong> <%= horse.age %><br>
-                  <strong>Location:</strong> <%= horse.location %><br>
-                  <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %><br>
-                  <strong>Pedigree:</strong> <%= horse.pedigree %><br>
-                  <strong>Progeny Success:</strong> <%= horse.progeny_success %><br>
-                  <strong>Race Record:</strong> <%= horse.race_record %>
-                </p>
-              </div>
-
-              <!-- Footer -->
-              <div class="modal-footer">
-                <%= link_to "Book", horse_path(horse), class: "btn btn-primary" %>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  <!-- Optional icon if using Font Awesome -->
-                  <i class="fa fa-times"></i>
-                  Close
-                </button>
-              </div>
-
+            <!-- Card Body -->
+            <div class="card-body">
+              <h5 class="card-title"><%= horse.name %></h5>
+              <p class="card-text">
+                <strong>Location:</strong> <%= horse.location %><br>
+                <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+              </p>
             </div>
           </div>
-        </div>
-        <!-- End of Modal -->
-
+        <% end %> <!-- Closing link_to block -->
       </div>
     <% end %>
   </div>
