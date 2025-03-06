@@ -89,35 +89,36 @@
 
   <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
-
-    <!-- Iterate over your horses -->
+  
+        <!-- Iterate over your horses -->
     <% @horses.each do |horse| %>
       <div class="col">
+        <!-- Link to the horse show page - whole card -->
+        <%= link_to horse_path(horse), class: "text-decoration-none text-dark" do %>
+          <!-- Card (clickable) -->
+          <div class="card h-100 p-3 rounded-4"
+              style="cursor: pointer; background-color: #e9edc9;">
 
-        <!-- Card (clickable) -->
-        <div class="card h-100 p-3 rounded-4"
-             style="cursor: pointer; background-color: #e9edc9;">
+            <!-- Image -->
+            <% if horse.pictures.attached? %>
+              <%= cl_image_tag horse.pictures.first.key %>
+            <% else %>
+              <%= image_tag "backup-image.png",
+                  alt: "No Image",
+                  class: "card-img-top img-fluid border rounded mb-3",
+                  style: "border-color: #ccc;" %>
+            <% end %>
 
-          <!-- Image -->
-          <% if horse.pictures.attached? %>
-            <%= cl_image_tag horse.pictures.first.key %>
-          <% else %>
-            <%= image_tag "backup-image.png",
-                alt: "No Image",
-                class: "card-img-top img-fluid border rounded mb-3",
-                style: "border-color: #ccc;" %>
-          <% end %>
-
-          <!-- Card Body -->
-          <div class="card-body">
-            <h5 class="card-title"><%= horse.name %></h5>
-            <p class="card-text">
-              <strong>Location:</strong> <%= horse.location %><br>
-              <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
-            </p>
+            <!-- Card Body -->
+            <div class="card-body">
+              <h5 class="card-title"><%= horse.name %></h5>
+              <p class="card-text">
+                <strong>Location:</strong> <%= horse.location %><br>
+                <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+              </p>
+            </div>
           </div>
-        </div>
-
+        <% end %> <!-- Closing link_to block -->
       </div>
     <% end %>
   </div>
