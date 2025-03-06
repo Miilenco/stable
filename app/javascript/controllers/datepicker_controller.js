@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
     flatpickr(this.startDateTarget, {
       altInput: true,
-      altFormat: "F j, Y",
+      altFormat: "d F, y",
       dateFormat: "Y-m-d",
       minDate: "today",
       onChange: () => this.calculateCost()
@@ -16,7 +16,7 @@ export default class extends Controller {
 
     flatpickr(this.endDateTarget, {
       altInput: true,
-      altFormat: "F j, Y",
+      altFormat: "d F, y",
       dateFormat: "Y-m-d",
       minDate: "today",
       onChange: () => this.calculateCost()
@@ -27,8 +27,8 @@ export default class extends Controller {
     const startDate = this.startDateTarget.value ? new Date(this.startDateTarget.value) : null;
     const endDate = this.endDateTarget.value ? new Date(this.endDateTarget.value) : null;
 
-    if (startDate && endDate && endDate > startDate) {
-      const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // Convert ms to days
+    if (startDate && endDate && endDate >= startDate) {
+      const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1; // Convert ms to days
       const totalCost = duration * this.priceAtBookingValue;
 
       this.totalCostTarget.value = totalCost.toFixed(2); // Update the total cost input field

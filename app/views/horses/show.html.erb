@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- app/views/horses/show.html.erb -->
 
 <!-- Inline CSS for demonstration; ideally move these into a separate .css file. -->
@@ -122,4 +123,62 @@
 
     </div>
   </div>
+=======
+<div class="container mt-4">
+  <div class="row">
+    <!-- Left Column: Horse Details (no card) -->
+    <div class="col-md-6 mb-4">
+      <% if @horse.pictures.attached? %>
+        <%= cl_image_tag(@horse.pictures.first.key, class: "img-fluid mx-auto d-block", style: "height: 250px; object-fit: cover;") %>
+      <% else %>
+        <%= image_tag "backup-image.png", class: "img-fluid mx-auto d-block", style: "height: 250px; object-fit: cover;" %>
+      <% end %>
+      <div class="mt-3">
+        <h2 class="text-center mt-4 mb-3"><%= @horse.name %></h2>
+        <p class="text-center"><strong>Age:</strong> <%= @horse.age %></p>
+        <p class="text-center"><strong>Breed:</strong> <%= @horse.breed %></p>
+        <p class="text-center"><strong>Location:</strong> <%= @horse.location %></p>
+        <p class="text-center"><strong>Pedigree:</strong> <%= @horse.pedigree %></p>
+        <p class="text-center"><strong>Stud Fee:</strong> <%= @horse.stud_fee %></p>
+        <p class="text-center"><strong>Race Record:</strong> <%= @horse.race_record %></p>
+        <p class="text-center"><strong>Progeny Success:</strong> <%= @horse.progeny_success %></p>
+        <div class="text-center mt-3">
+          <%= link_to "Back to list", horses_path, class: "btn btn-secondary me-2" %>
+          <% if user_signed_in? && @horse.user_id == current_user.id %>
+            <%= link_to "Edit", edit_horse_path(@horse), class: "btn btn-primary me-2" %>
+            <%= link_to "Delete", horse_path(@horse), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Booking Form or Mapbox Placeholder -->
+    <div class="col-md-6 mb-4">
+      <% if user_signed_in? %>
+        <% if @horse.user_id != current_user.id %>
+          <%= render 'bookings/form', horse: @horse, booking: @booking %>
+        <% else %>
+          <div id="mapbox-placeholder" style="height: 300px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <h3>Mapbox Placeholder: Where to pick up your horse</h3>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="alert alert-info text-center">
+          <%= link_to "Sign in to request a booking", new_user_session_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Render the bottom mapbox row only if the current user is not signed in or is viewing someone else's horse %>
+  <% if !user_signed_in? || (@horse.user_id != current_user.id) %>
+    <div class="row">
+      <div class="col">
+        <div id="mapbox-placeholder" style="height: 300px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <h3>Mapbox Placeholder: Where to pick up your horse</h3>
+        </div>
+      </div>
+    </div>
+  <% end %>
+>>>>>>> 62554c545ea83e3f9dd85339e493e008cedc2578
 </div>
