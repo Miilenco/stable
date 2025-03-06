@@ -27,7 +27,7 @@ export default class extends Controller {
     const startDate = this.startDateTarget.value ? new Date(this.startDateTarget.value) : null;
     const endDate = this.endDateTarget.value ? new Date(this.endDateTarget.value) : null;
 
-    if (startDate && endDate && endDate > startDate) {
+    if (startDate && endDate && endDate >= startDate) {
       const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)); // Convert ms to days
       const totalCost = duration * this.priceAtBookingValue;
 
