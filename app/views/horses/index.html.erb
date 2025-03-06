@@ -89,7 +89,7 @@
 
   <!-- Row with 1 column on extra-small, 2 on medium, 4 on large -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
-  
+
         <!-- Iterate over your horses -->
     <% @horses.each do |horse| %>
       <div class="col">
@@ -116,9 +116,40 @@
                 <strong>Location:</strong> <%= horse.location %><br>
                 <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
               </p>
+              <div class="text-center pb-3">
+                <button type="button" class="btn btn-sm position-absolute top-0 end-0 m-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#horseModal-<%= horse.id %>"
+                        onclick="event.preventDefault(); event.stopPropagation();">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </div>
             </div>
           </div>
         <% end %> <!-- Closing link_to block -->
+      </div>
+
+      <!-- Empty Modal -->
+      <div class="modal fade" id="horseModal-<%= horse.id %>" tabindex="-1" aria-labelledby="horseModalLabel-<%= horse.id %>" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fs-4 fw-bold" id="horseModalLabel-<%= horse.id %>"><%= horse.name %></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <% if horse.pictures.attached? %>
+                <%= cl_image_tag horse.pictures.first.key, class: "img-fluid mb-3" %>
+              <% else %>
+                <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
+              <% end %>
+              <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
+              <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
+              <p class="mb-1"><strong>Location:</strong> <%= horse.location %></p>
+              <p class="mb-1"><strong>Stud Fee:</strong> <em><%= number_to_currency(horse.stud_fee) %></em></p>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
