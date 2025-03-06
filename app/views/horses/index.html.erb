@@ -118,57 +118,6 @@
           </div>
         </div>
 
-        <!-- Modal for This Horse -->
-        <div class="modal fade"
-             id="horseModal-<%= horse.id %>"
-             tabindex="-1"
-             aria-labelledby="horseModalLabel-<%= horse.id %>"
-             aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <!-- Header -->
-              <div class="modal-header">
-                <h5 class="modal-title" id="horseModalLabel-<%= horse.id %>">
-                  <%= horse.name %>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-              </div>
-
-              <!-- Body -->
-              <div class="modal-body">
-                <% if horse.pictures.attached? %>
-                  <%= cl_image_tag horse.pictures.first.key %>
-                <% else %>
-                  <%= image_tag "backup-image.png", alt: "No Image", class: "img-fluid mb-3" %>
-                <% end %>
-                <p>
-                  <strong>Breed:</strong> <%= horse.breed %><br>
-                  <strong>Age:</strong> <%= horse.age %><br>
-                  <strong>Location:</strong> <%= horse.location %><br>
-                  <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %><br>
-                  <strong>Pedigree:</strong> <%= horse.pedigree %><br>
-                  <strong>Progeny Success:</strong> <%= horse.progeny_success %><br>
-                  <strong>Race Record:</strong> <%= horse.race_record %>
-                </p>
-              </div>
-
-              <!-- Footer -->
-              <div class="modal-footer">
-                <%= link_to "Book", horse_path(horse), class: "btn btn-primary" %>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  <!-- Optional icon if using Font Awesome -->
-                  <i class="fa fa-times"></i>
-                  Close
-                </button>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <!-- End of Modal -->
-
       </div>
     <% end %>
   </div>
