@@ -59,11 +59,11 @@
                   <p class="card-text">Status: <%= booking.status.capitalize %></p>
                 </div>
                 <div class="card-footer text-end small">
-                  <% duration = booking.end_date - booking.start_date  %>
+                  <% duration = 1 + (booking.end_date - booking.start_date).to_i  %>
                   <% total_cost = duration * booking.horse.stud_fee %>
                   <span>Total Cost: £<%= total_cost %></span><br>
-                  <span>Start: <%= booking.start_date %></span><br>
-                  <span>End: <%= booking.end_date %></span>
+                  <span><strong><%= duration %> days</strong></span><br>
+                  <span><em><%= booking.start_date.strftime("%d/%m/%y") %> - <%= booking.end_date.strftime("%d/%m/%y") %></em></span>
                 </div>
                 <span class="stretched-link"></span> <!-- Makes the whole card clickable -->
               </div>
