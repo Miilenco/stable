@@ -1,2 +1,17 @@
 // Import page-specific CSS files here.
 @import "home";
+.btn-dark-green {
+  background-color: #155724; /* Dark Green */
+  color: white; /* Icon color */
+  padding: 6px 10px;
+  border-radius: 50px; /* Round button */
+  transition: background-color 0.3s ease;
+}
+
+.btn-dark-green:hover {
+  background-color: #b6cfbb; /* Slightly darker green on hover */
+}
+
+.custom-card {
+  position: relative; /* Ensure button positions correctly */
+}
