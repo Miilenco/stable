@@ -10,3 +10,15 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+// General transition effect for smooth color changes
+.navbar-heading,
+.nav-link.text-primary {
+  transition: color 0.2s ease-in-out;
+}
+
+// Darkening effect on hover (consistent for both navbar heading and buttons)
+.navbar-heading:hover,
+.nav-link.text-primary:hover {
+  color: darken(#283618, 15%) !important; // Adjust darken percentage as needed
+}
