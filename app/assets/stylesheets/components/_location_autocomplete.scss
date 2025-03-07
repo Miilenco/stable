@@ -79,11 +79,15 @@ svg.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-loading {
 }
 
 /* Hover effect for suggestions */
-.suggestions li:hover {
+.suggestions li {
   background-color: #f8f8f8;
 }
 
 /* Style for active suggestion list item */
 .suggestions li.active {
   background-color: #e9ecef;  /* light gray background for active state */
+}
+
+.mapboxgl-ctrl-geocoder--button:hover {
+  display: none;
 }
