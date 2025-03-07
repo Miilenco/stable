@@ -136,10 +136,11 @@
               <h5 class="modal-title fs-4 fw-bold" id="horseModalLabel-<%= horse.id %>"><%= horse.name %></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body text-start">
               <%= render 'shared/carousel', horse: horse %>
-              <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
               <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
+              <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
+              <p class="mb-1"><strong>Pedigree:</strong> <%= horse.pedigree %></p>
               <p class="mb-1"><strong>Location:</strong> <%= horse.location %></p>
               <p class="mb-1"><strong>Stud Fee:</strong> <em><%= number_to_currency(horse.stud_fee) %></em></p>
               <%= link_to "View Details", horse_path(horse), class: "btn btn-primary mt-3" %>
