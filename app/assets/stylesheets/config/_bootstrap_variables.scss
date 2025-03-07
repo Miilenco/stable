@@ -20,6 +20,7 @@ $warning:    $orange;
 $light-brown:$light-brown;
 $brown:      $brown;
 $secondary:  $dark-brown;
+$card:       $lighter-green;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
@@ -35,3 +36,4 @@ $border-radius-xxl:           1rem;
 $theme-colors: map-merge($theme-colors, ( "light-brown": $light-brown ));
 $theme-colors: map-merge($theme-colors, ( "brown": $brown ));
 $theme-colors: map-merge($theme-colors, ( "secondary": $secondary ));
+$theme-colors: map-merge($theme-colors, ( "card": $lighter-green ));
