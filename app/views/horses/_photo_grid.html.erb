@@ -1,0 +1,50 @@
+<!-- Horse Photo Grid Partial: 1 large, 2 small -->
+<div class="row g-0">
+  <div class="col-md-8">
+    <!-- Large Image -->
+    <% if horse.pictures.attached? %>
+      <button type="button" class="border-0 p-0 w-100" data-bs-toggle="modal" data-bs-target="#horseCarouselModal-<%= horse.id %>">
+        <%= cl_image_tag horse.pictures.first.key, class: "img-fluid w-100", style: "height: 300px; object-fit: cover;" %>
+      </button>
+    <% else %>
+      <button type="button" class="border-0 p-0 w-100" data-bs-toggle="modal" data-bs-target="#horseCarouselModal-<%= horse.id %>">
+        <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 300px; object-fit: cover;" %>
+      </button>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 d-flex flex-column">
+    <% if horse.pictures.attached? && horse.pictures.count > 1 %>
+      <% horse.pictures[1..2].each do |pic| %>
+        <div class="">
+          <button type="button" class="border-0 p-0 w-100" data-bs-toggle="modal" data-bs-target="#horseCarouselModal-<%= horse.id %>">
+            <%= cl_image_tag pic.key, class: "img-fluid w-100", style: "height: 150px; object-fit: cover;" %>
+          </button>
+        </div>
+      <% end %>
+    <% else %>
+      <% 2.times do %>
+        <div class="">
+          <button type="button" class="border-0 p-0 w-100" data-bs-toggle="modal" data-bs-target="#horseCarouselModal-<%= horse.id %>">
+            <%= image_tag "backup-image.png", class: "img-fluid w-100", style: "height: 150px; object-fit: cover;" %>
+          </button>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Horse Image Modal -->
+<div class="modal fade" id="horseCarouselModal-<%= horse.id %>" tabindex="-1" aria-labelledby="horseCarouselLabel-<%= horse.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="horseCarouselLabel-<%= horse.id %>">Horse Images</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render "shared/carousel", horse: horse %>
+      </div>
+    </div>
+  </div>
+</div>
