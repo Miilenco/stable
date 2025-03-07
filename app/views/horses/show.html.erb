@@ -25,7 +25,7 @@
     </div>
 
     <!-- Right Column: Booking Form or Mapbox Placeholder -->
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4 sticky-column">
       <% if user_signed_in? %>
         <% if @horse.user_id != current_user.id %>
           <%= render 'bookings/form', horse: @horse, booking: @booking %>
