@@ -18,6 +18,9 @@
           <strong>End Date:</strong> <%= @booking.end_date %>
         </li>
         <li class="list-group-item">
+          <strong>Duration:</strong> <%= 1 + (@booking.end_date - @booking.start_date).to_i %> days
+        </li>
+        <li class="list-group-item">
           <strong>Price at Booking:</strong> £<%= @booking.price_at_booking %> / day
         </li>
         <li class="list-group-item">
