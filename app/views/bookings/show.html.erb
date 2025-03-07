@@ -41,7 +41,7 @@
       <div class="my-2 text-center d-flex justify-content-center gap-5">
         <% if @booking.pending? && current_user == @booking.horse.user %>
           <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-primary me-2" %>
-          <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-secondary me-2" %>
+          <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-light-brown me-2" %>
         <% end %>
       </div>
     </div>
