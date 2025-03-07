@@ -136,7 +136,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-start">
-              <%= render 'shared/carousel', horse: horse %>
+              <div class="text-center">
+                <%= render 'shared/carousel', horse: horse %>
+              </div>
               <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
               <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
               <p class="mb-1"><strong>Pedigree:</strong> <%= horse.pedigree %></p>
