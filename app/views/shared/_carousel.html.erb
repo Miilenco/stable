@@ -1,0 +1,31 @@
+<div id="carousel-<%= horse.id %>" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <% horse.pictures.each_with_index do |_, index| %>
+      <button type="button" data-bs-target="#carousel-<%= horse.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+    <% end %>
+  </div>
+
+  <div class="carousel-inner">
+    <% if horse.pictures.attached? %>
+      <% horse.pictures.each_with_index do |picture, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <%= cl_image_tag picture.key, class: "d-block w-100 rounded", alt: "Horse Image" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="carousel-item active">
+        <%= image_tag "backup-image.png", class: "d-block w-100 rounded", alt: "No Image Available" %>
+      </div>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel-<%= horse.id %>" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel-<%= horse.id %>" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
