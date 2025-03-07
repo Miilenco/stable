@@ -74,33 +74,35 @@
 
     <!-- Incoming Requests Tab -->
     <div class="tab-pane fade" id="offers" role="tabpanel" aria-labelledby="offers-tab">
-      <h2 class="px-3 py-2 text-center mb-4">Incoming Requests</h2>
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <% @incoming_requests.each do |booking| %>
           <div class="col">
-            <div class="card h-100">
-              <% if booking.horse.pictures.attached? %>
-                <%= cl_image_tag booking.horse.pictures.first.key,
-                                 class: "card-img-top",
-                                 style: "height: 150px; width: 150px; object-fit: cover; margin: auto; padding-top: 10px;" %>
-              <% else %>
-                <%= image_tag "backup-image.png",
-                              class: "card-img-top",
-                              style: "height: 150px; width: 150px; object-fit: cover; margin: auto; padding-top: 10px;" %>
-              <% end %>
-              <div class="card-body text-center">
-                <h5 class="card-title"><%= booking.horse.name %></h5>
-                <p class="card-text">Status: <%= booking.status.capitalize %></p>
-                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary btn-sm" %>
+            <!-- Link to the booking show page - whole card -->
+            <%= link_to booking_path(booking), class: "text-decoration-none text-dark" do %>
+              <div class="card h-100 bg-card rounded-4">
+                <% if booking.horse.pictures.attached? %>
+                  <%= cl_image_tag booking.horse.pictures.first.key,
+                                  class: "card-img-top",
+                                  style: "height: 150px; width: 150px; object-fit: cover; margin: auto; padding-top: 10px;" %>
+                <% else %>
+                  <%= image_tag "backup-image.png",
+                                class: "card-img-top",
+                                style: "height: 150px; width: 150px; object-fit: cover; margin: auto; padding-top: 10px;" %>
+                <% end %>
+                <div class="card-body text-center">
+                  <h5 class="card-title"><%= booking.horse.name %></h5>
+                  <p class="card-text">Status: <%= booking.status.capitalize %></p>
+                </div>
+                <div class="card-footer text-end small">
+                  <% duration = 1 + (booking.end_date - booking.start_date).to_i  %>
+                  <% total_cost = duration * booking.horse.stud_fee %>
+                  <span>Total Cost: £<%= total_cost %></span><br>
+                  <span><strong><%= duration %> days</strong></span><br>
+                  <span><em><%= booking.start_date.strftime("%d/%m/%y") %> - <%= booking.end_date.strftime("%d/%m/%y") %></em></span>
+                </div>
+                <span class="stretched-link"></span> <!-- Makes the whole card clickable -->
               </div>
-              <div class="card-footer text-end small">
-                <% duration = 1 + (booking.end_date - booking.start_date).to_i  %>
-                <% total_cost = duration * booking.horse.stud_fee %>
-                <span>Total Cost: £<%= total_cost %></span><br>
-                <span>Start: <%= booking.start_date %></span><br>
-                <span>End: <%= booking.end_date %></span>
-              </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
