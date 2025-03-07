@@ -34,7 +34,7 @@
           <%= render 'bookings/form', horse: @horse, booking: @booking %>
         <% else %>
             <div id="map-owner"
-                 style="height: 100%; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;"
+                 style="height: 600px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;"
                  data-controller="map"
                  data-map-markers-value='<%= [{
                    lat: @horse.latitude,
