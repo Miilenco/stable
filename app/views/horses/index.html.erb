@@ -110,17 +110,13 @@
             <% end %>
 
             <!-- Card Body -->
-            <div class="card-body">
-              <h5 class="card-title"><%= horse.name %></h5>
-              <div class="d-flex flex-column justify-content-between min-height-150">
+              <h5 class="card-title pt-1 mb-0"><%= horse.name %></h5>
+              <div class="d-flex flex-column justify-content-between">
                 <div>
-                  <strong>Location:</strong> <%= horse.location %><br>
-                </div>
-                <div>
-                  <strong>Stud Fee:</strong> <%= number_to_currency(horse.stud_fee) %>
+                  <strong> <%= number_to_currency(horse.stud_fee) %></strong>
                 </div>
               </div>
-              <div class="text-center pb-3">
+              <div class="text-center">
                 <button type="button" class="btn quick-view-btn rounded-circle position-absolute top-0 end-0 m-2"
                         data-bs-toggle="modal"
                         data-bs-target="#horseModal-<%= horse.id %>"
@@ -128,7 +124,6 @@
                   <i class="fa fa-eye"></i>
                 </button>
               </div>
-            </div>
           </div>
         <% end %> <!-- Closing link_to block -->
       </div>
