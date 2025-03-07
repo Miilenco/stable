@@ -18,17 +18,16 @@
           <%= link_to "Back to list", horses_path, class: "btn btn-secondary me-2" %>
           <% if user_signed_in? && @horse.user_id == current_user.id %>
 
-        <%= link_to edit_horse_path(@horse), class: "btn btn-light me-2" do %>
-  <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
-<% end %>
+          <%= link_to edit_horse_path(@horse), class: "btn btn-light me-2" do %>
+            <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
+          <% end %>
 
-<%= link_to horse_path(@horse), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-light" do %>
-  <i class="fas fa-trash-alt"></i> <!-- Font Awesome trash icon -->
-<% end %>
-
-  <% end %>
+          <%= link_to horse_path(@horse), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-light" do %>
+            <i class="fas fa-trash-alt"></i> <!-- Font Awesome trash icon -->
+          <% end %>
         </div>
       </div>
+      <% end %>
     </div>
 
     <!-- Right Column: Booking Form or Mapbox Placeholder -->

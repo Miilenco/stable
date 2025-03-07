@@ -38,10 +38,13 @@
       </div>
 
       <!-- Buttons -->
-      <div class="mt-4">
+      <div class="my-4 d-flex justify-content-between">
         <% if @booking.pending? && current_user == @booking.horse.user %>
-          <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-success me-2" %>
-          <%= button_to "Decline", booking_path(@booking, status: "declined"), method: :patch, class: "btn btn-danger me-2" %>
+          <div></div> <!-- Empty to allow 'Accept' to be centered -->
+          <%= button_to "Accept", booking_path(@booking, status: "accepted"), method: :patch, class: "btn btn-primary me-2" %>
+          <%= link_to booking_path(@booking.horse, status: "declined"), method: :patch, class: "btn btn-card" do %>
+            <i class="fas fa-trash-alt"></i> <!-- Font Awesome trash icon -->
+          <% end %>
         <% end %>
       </div>
     </div>
