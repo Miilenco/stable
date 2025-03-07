@@ -83,7 +83,7 @@ group :development do
   # gem "spring"
 
   # Autoreloads html/css as you edit
-  gem "hotwire-livereload"
+  # gem "hotwire-livereload"
 end
 
 group :test do
