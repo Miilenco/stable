@@ -95,7 +95,7 @@
                 <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary btn-sm" %>
               </div>
               <div class="card-footer text-end small">
-                <% duration = booking.end_date - booking.start_date  %>
+                <% duration = 1 + (booking.end_date - booking.start_date).to_i  %>
                 <% total_cost = duration * booking.horse.stud_fee %>
                 <span>Total Cost: £<%= total_cost %></span><br>
                 <span>Start: <%= booking.start_date %></span><br>
