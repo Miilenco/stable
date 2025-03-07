@@ -1,12 +1,11 @@
-<!-- app/views/horses/index.html.erb -->
 <div class="container my-4">
   <div class="row">
     <!-- Left Two Columns: Horse Cards -->
     <div class="col-md-8">
-
-      <div class="d-flex justify-content-between align-items-center mb-1">
-        <h1>Stallions</h1>
-        <!-- Magnifying Glass Button for Filters (if you use an offcanvas, etc.) -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- Optional spacer: only visible on medium+ screens -->
+        <div class="d-none d-md-block"></div>
+        <h1 class="text-center flex-grow-1">Stallions</h1>
         <button class="btn btn-outline-secondary"
                 type="button"
                 data-bs-toggle="offcanvas"
@@ -23,7 +22,7 @@
             <%= link_to horse_path(horse), class: "text-decoration-none text-dark" do %>
               <div class="card h-100 p-3 rounded-4" style="cursor: pointer; background-color: #e9edc9;">
                 <% if horse.pictures.attached? %>
-                  <%= cl_image_tag horse.pictures.first.key, transformation: [ radius: 20, gravity: "auto", background: "#e9edc9", width: 500, height: 400, crop: "fill" ] %>
+                  <%= cl_image_tag horse.pictures.first.key, transformation: [ radius: 20, gravity: "auto", background: "#e9edc9", width:500, height: 400, crop: "fill"] %>
                 <% else %>
                   <%= image_tag "backup-image.png",
                       alt: "No Image",
@@ -50,14 +49,16 @@
 
           <!-- Modal for each horse -->
           <div class="modal fade" id="horseModal-<%= horse.id %>" tabindex="-1" aria-labelledby="horseModalLabel-<%= horse.id %>" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content bg-card">
                 <div class="modal-header">
                   <h5 class="modal-title fs-4 fw-bold" id="horseModalLabel-<%= horse.id %>"><%= horse.name %></h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-start">
-                  <%= render 'shared/carousel', horse: horse %>
+                  <div class="text-center">
+                    <%= render 'shared/carousel', horse: horse %>
+                  </div>
                   <p class="mb-1"><strong>Age:</strong> <%= horse.age %></p>
                   <p class="mb-1"><strong>Breed:</strong> <%= horse.breed %></p>
                   <p class="mb-1"><strong>Pedigree:</strong> <%= horse.pedigree %></p>
@@ -74,7 +75,7 @@
 
     <!-- Right Column: Sticky Map -->
     <div class="col-md-4 mt-4">
-      <div class="sticky-top mt-5" style="top: 10px;">
+      <div class="sticky-top" style="top: 10px;">
         <div id="map-index"
              style="height: 800px; border: 2px dashed #ccc;"
              data-controller="map"
@@ -91,3 +92,4 @@
     </div>
   </div>
 </div>
+

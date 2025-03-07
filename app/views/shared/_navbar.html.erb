@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
     <%= link_to "horses", class: "navbar-brand" do %>
       <%= image_tag "horse-logo.svg" %>
@@ -21,10 +21,10 @@
             <%= link_to "List your horse", new_horse_path, class: "nav-link text-primary" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "My horses", "#", class: "nav-link text-primary" %>
+            <%= link_to "My horses", user_path(current_user), class: "nav-link text-primary" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Bookings", bookings_path, class: "nav-link text-primary" %>
+            <%= link_to "Covers", bookings_path, class: "nav-link text-primary" %>
           </li>
 
           <!-- Profile dropdown -->
