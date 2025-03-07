@@ -101,7 +101,7 @@
 
             <!-- Image -->
             <% if horse.pictures.attached? %>
-              <%= cl_image_tag horse.pictures.first.key, transformation: [width:500, height: 400, crop: "fill"] %>
+              <%= cl_image_tag horse.pictures.first.key, transformation: [ radius: 20, gravity: "auto", background: "#e9edc9" , width:500, height: 400, crop: "fill"] %>
             <% else %>
               <%= image_tag "backup-image.png",
                   alt: "No Image",
