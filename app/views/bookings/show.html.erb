@@ -2,32 +2,32 @@
 <div class="container mt-4">
   <div class="row">
     <!-- Left Column: Booking Details & Horse Image -->
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4 pt-3 bg-card rounded-4 card">
       <h2 class="card-title mb-4">Cover Details</h2>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Horse:</strong> <%= @booking.horse.name %>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Booked by:</strong> <%= @booking.user.email %>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Start Date:</strong> <%= @booking.start_date %>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>End Date:</strong> <%= @booking.end_date %>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <% duration = (@booking.end_date - @booking.start_date).to_i %>
           <strong>Duration:</strong> <%= 1 + duration %> days
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Price at Booking:</strong> £<%= @booking.price_at_booking %> / day
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Total Cost:</strong> £<%= @booking.price_at_booking * duration %>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item bg-card">
           <strong>Status:</strong> <%= @booking.status.capitalize %>
         </li>
       </ul>
