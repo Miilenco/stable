@@ -9,7 +9,7 @@
     <% if horse.pictures.attached? %>
       <% horse.pictures.each_with_index do |picture, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
-          <%= cl_image_tag picture.key, transformation: [width:600, height: 500, crop: "fill", gravity: "auto"], alt: "Horse Image" %>
+          <%= cl_image_tag picture.key, transformation: [height: 500, crop: "fill"], alt: "Horse Image" %>
         </div>
       <% end %>
     <% else %>
