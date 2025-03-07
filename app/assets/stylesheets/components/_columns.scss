@@ -1,0 +1,5 @@
+.sticky-column {
+  position: sticky;
+  top: 80px; /* Adjust depending on your navbar height */
+  align-self: start; /* Ensures it stretches properly in flex/grid layouts */
+}
